@@ -1,0 +1,28 @@
+{
+  "name": "beyond-the-spectrum",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "concurrently": "^3.1.0",
+    "node-sass": "^4.2.0",
+    "nodemon": "^1.11.0",
+    "react-scripts": "0.8.4"
+  },
+  "dependencies": {
+    "flexboxgrid-sass": "^8.0.5",
+    "material-ui": "^0.16.6",
+    "normalize-scss": "^6.0.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-tap-event-plugin": "^2.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "watch": "concurrently --names \"webpack, node-sass\" --prefix name \"npm run start\" \"npm run watch-css\"",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "build-css": "node-sass --include-path scss ./src/css/main.scss ./src/css/main.css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\""
+  }
+}
