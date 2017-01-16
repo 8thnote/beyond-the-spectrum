@@ -59,6 +59,9 @@ class App extends React.Component {
   }
 
   render() {
+    var filtersArray = Object.keys(this.state.filters.resources);
+    filtersArray = filtersArray.filter(filter => this.state.filters.resources[filter] === true);
+
     return (
       <div className="wrapper">
         <header className="container-fluid">
@@ -75,15 +78,14 @@ class App extends React.Component {
               {
                 this.state.resources
                   .filter(resource => {
-                    // if (this.state.filters.resourceType.book) {
-                    //   return
-                    // }
-
-                    // return ! Object.keys(this.state.filters.resourceType)
-                    //   .filter(filter => this.state.filters.resourceType[filter] === true)
-                    //   .indexOf(resource.resourceType);
+                    console.log(filtersArray);
+                    console.log(filtersArray.indexOf(resource.resourceType) > -1);
+                    return filtersArray.indexOf(resource.resourceType) > -1;
                   })
-                  .map(resource => <ResourceListView key={resource.id} data={resource} />)
+                  .map(resource => {
+                    console.table({resource});
+                      return <ResourceListView key={resource.id} data={resource} />
+                  })
               }
             </div>
           </div>
