@@ -1,4 +1,5 @@
 import React from 'react';
+import { Match, Miss } from 'react-router';
 import update from 'immutability-helper';
 
 import ResourceListView from './components/ResourceListView';
@@ -63,18 +64,18 @@ class App extends React.Component {
     filtersArray = filtersArray.filter(filter => this.state.filters.resources[filter] === true);
 
     return (
-      <div className="wrapper">
+      <div>
         <header className="container-fluid">
           <p>Header</p>
         </header>
 
         <div className="container-fluid">
           <div className="row">
-            <div className="col-xs-12 col-md-3">
+            <div className="col-xs-12 col-md-2">
               <label><input type="checkbox" checked={this.state.filters.resources.book} onChange={this.onChangeFilter('book')}/> Book</label><br/>
               <label><input type="checkbox" checked={this.state.filters.resources.website} onChange={this.onChangeFilter('website')}/> Website</label><br/>
             </div>
-            <div className="col-xs-12 col-md-6" style={{backgroundColor: '#dadada'}}>
+            <div className="col-xs-12 col-md-4" style={{backgroundColor: '#dadada'}}>
               {
                 this.state.resources
                   .filter(resource => {
@@ -87,6 +88,14 @@ class App extends React.Component {
                       return <ResourceListView key={resource.id} data={resource} />
                   })
               }
+            </div>
+            <div className="col-xs-12 col-md-6">
+              <Match pattern={`${this.props.pathname}selected`} render={() => (
+                <h3>You selected an item</h3>
+              )}/>
+              <Miss render={() => (
+                <h3>Select one</h3>
+              )}/>
             </div>
           </div>
         </div>

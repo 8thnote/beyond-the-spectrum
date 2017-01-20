@@ -1,10 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
+import { BrowserRouter, Match, Miss } from 'react-router';
+
 import App from './App';
+import NotFound from './NotFound';
 
 import './css/main.css';
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+const Root = () => {
+  return (
+    <BrowserRouter>
+      <div>
+        <Match pattern="/" component={App} />
+        <Miss component={NotFound} />
+      </div>
+    </BrowserRouter>
+  )
+}
+
+render(<Root/>, document.querySelector('#main'));
