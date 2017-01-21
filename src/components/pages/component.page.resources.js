@@ -2,8 +2,8 @@ import React from 'react';
 import { Match, Miss } from 'react-router';
 import update from 'immutability-helper';
 
-import ResourceListView from './components/ResourceListView';
-import ResourceDetails from './components/ResourceDetails';
+import ResourceListView from '../fragments/component.resource-list-view';
+import ResourceDetails from '../fragments/component.resource-details';
 
 const initialState = {
   resources: [
@@ -36,7 +36,7 @@ const initialState = {
   selectedResource: null
 };
 
-class App extends React.Component {
+class ResourcesPage extends React.Component {
   constructor () {
     super();
 
@@ -45,28 +45,6 @@ class App extends React.Component {
 
     this.state = initialState;
   }
-
-  handleChangeFilter (fieldName) {
-    return (event) => {
-      const newData = update(this.state.filters, {
-        resources: {
-          [fieldName]: {
-            $set: !this.state.filters.resources[fieldName]
-          }
-        }
-      });
-
-      this.setState({filters: newData});
-    }
-  }
-
-  handleResourceClick (id) {
-    console.log(`clicked! ${id}`);
-    this.setState({selectedResource: id});
-    this.context.router.transitionTo(`/${id}`);
-  }
-
-
 
   render() {
     var self = this;
@@ -112,7 +90,7 @@ class App extends React.Component {
               { renderResourceList() }
             </div>
             <div className="col-xs-12 col-md-6">
-              <Match pattern={`${this.props.pathname}:resourceId`} render={(props) => (
+              <Match pattern={`${this.props.pathname}/:resourceId`} render={(props) => (
                 <ResourceDetails {...props} resources={this.state.resources} />
               )}/>
               <Miss render={() => (
@@ -123,11 +101,31 @@ class App extends React.Component {
         </div>
       </div>
     );
+  }// end render
+
+  handleChangeFilter (fieldName) {
+    return (event) => {
+      const newData = update(this.state.filters, {
+        resources: {
+          [fieldName]: {
+            $set: !this.state.filters.resources[fieldName]
+          }
+        }
+      });
+
+      this.setState({filters: newData});
+    }
+  }
+
+  handleResourceClick (id) {
+    console.log(`clicked! ${id}`);
+    this.setState({selectedResource: id});
+    this.context.router.transitionTo(`/resources/${id}`);
   }
 }
 
-App.contextTypes = {
+ResourcesPage.contextTypes = {
   router: React.PropTypes.object
 }
 
-export default App;
+export default ResourcesPage;
