@@ -1,5 +1,5 @@
 import React from 'react';
-import { Match, Miss } from 'react-router';
+import { Match, Miss, Link } from 'react-router';
 import update from 'immutability-helper';
 
 import ResourceListView from '../fragments/component.resource-list-view';
@@ -41,13 +41,11 @@ class ResourcesPage extends React.Component {
     super();
 
     this.handleChangeFilter = this.handleChangeFilter.bind(this);
-    this.handleResourceClick = this.handleResourceClick.bind(this);
 
     this.state = initialState;
   }
 
   render() {
-    var self = this;
     var filtersArray = Object.keys(this.state.filters.resources);
     filtersArray = filtersArray.filter(filter => this.state.filters.resources[filter] === true);
     var resources = this.state.resources;
@@ -66,7 +64,12 @@ class ResourcesPage extends React.Component {
 
       resources = resources
         .map(resource => {
-          return <ResourceListView key={resource.id} data={resource} selectResource={self.handleResourceClick} />
+          return (
+            <Link to={`/resources/${resource.id}`} key={resource.id}>{
+              ({isActive, href, onClick}) =>
+                <ResourceListView data={resource} onClick={onClick} href={href} selected={isActive} />
+            }</Link>
+          )
         });
 
       return resources;
@@ -74,30 +77,22 @@ class ResourcesPage extends React.Component {
 
 
     return (
-      <div>
-        <header className="container-fluid">
-          <h1>Beyond the Spectrum</h1>
-        </header>
-
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-xs-12 col-md-2">
-              <p>Filter Resources:</p>
-              <label><input type="checkbox" checked={this.state.filters.resources.book} onChange={this.handleChangeFilter('book')}/> Book</label><br/>
-              <label><input type="checkbox" checked={this.state.filters.resources.website} onChange={this.handleChangeFilter('website')}/> Website</label><br/>
-            </div>
-            <div className="col-xs-12 col-md-4" style={{backgroundColor: '#dadada'}}>
-              { renderResourceList() }
-            </div>
-            <div className="col-xs-12 col-md-6">
-              <Match pattern={`${this.props.pathname}/:resourceId`} render={(props) => (
-                <ResourceDetails {...props} resources={this.state.resources} />
-              )}/>
-              <Miss render={() => (
-                <p>Select a resource to see more details here.</p>
-              )}/>
-            </div>
-          </div>
+      <div className="row">
+        <div className="col-xs-12 col-md-2">
+          <p>Filter Resources:</p>
+          <label><input type="checkbox" checked={this.state.filters.resources.book} onChange={this.handleChangeFilter('book')}/> Book</label><br/>
+          <label><input type="checkbox" checked={this.state.filters.resources.website} onChange={this.handleChangeFilter('website')}/> Website</label><br/>
+        </div>
+        <div className="col-xs-12 col-md-4" style={{backgroundColor: '#dadada'}}>
+          { renderResourceList() }
+        </div>
+        <div className="col-xs-12 col-md-6">
+          <Match pattern={`${this.props.pathname}/:resourceId`} render={(props) => (
+            <ResourceDetails {...props} resources={this.state.resources} />
+          )}/>
+          <Miss render={() => (
+            <p>Select a resource to see more details here.</p>
+          )}/>
         </div>
       </div>
     );
@@ -115,12 +110,6 @@ class ResourcesPage extends React.Component {
 
       this.setState({filters: newData});
     }
-  }
-
-  handleResourceClick (id) {
-    console.log(`clicked! ${id}`);
-    this.setState({selectedResource: id});
-    this.context.router.transitionTo(`/resources/${id}`);
   }
 }
 

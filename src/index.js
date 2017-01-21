@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter, Match, Miss } from 'react-router';
 
-import ResourcesPage from './components/pages/component.page.resources';
+import MasterLayout from './components/layout/component.layout.master';
 import NotFound from './NotFound';
 
 import './css/main.css';
@@ -11,7 +11,7 @@ const Root = () => {
   return (
     <BrowserRouter>
       <div>
-        <Match pattern="/resources" component={ResourcesPage} />
+        <Match pattern="/" component={MasterLayout} />
         <Miss component={NotFound} />
       </div>
     </BrowserRouter>
