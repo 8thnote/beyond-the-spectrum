@@ -3,6 +3,7 @@ import { Match, Miss } from 'react-router';
 import update from 'immutability-helper';
 
 import ResourceListView from './components/ResourceListView';
+import ResourceDetails from './components/ResourceDetails';
 
 const initialState = {
   resources: [
@@ -31,21 +32,21 @@ const initialState = {
       website: false
     },
     resourcesArray: []
-  }
+  },
+  selectedResource: null
 };
 
 class App extends React.Component {
   constructor () {
     super();
 
-    this.onChangeFilter = this.onChangeFilter.bind(this);
+    this.handleChangeFilter = this.handleChangeFilter.bind(this);
+    this.handleResourceClick = this.handleResourceClick.bind(this);
 
     this.state = initialState;
   }
 
-  onChangeFilter(fieldName) {
-
-
+  handleChangeFilter (fieldName) {
     return (event) => {
       const newData = update(this.state.filters, {
         resources: {
@@ -59,42 +60,63 @@ class App extends React.Component {
     }
   }
 
+  handleResourceClick (id) {
+    console.log(`clicked! ${id}`);
+    this.setState({selectedResource: id});
+    this.context.router.transitionTo(`/${id}`);
+  }
+
+
+
   render() {
+    var self = this;
     var filtersArray = Object.keys(this.state.filters.resources);
     filtersArray = filtersArray.filter(filter => this.state.filters.resources[filter] === true);
+    var resources = this.state.resources;
+
+    function renderResourceList () {
+      if (filtersArray.length > 0) {
+        resources = resources
+          .filter(resource => {
+            if (filtersArray.length > 0) {
+              return filtersArray.indexOf(resource.resourceType) > -1;
+            } else {
+              return true;
+            }
+          });
+      }
+
+      resources = resources
+        .map(resource => {
+          return <ResourceListView key={resource.id} data={resource} selectResource={self.handleResourceClick} />
+        });
+
+      return resources;
+    }
+
 
     return (
       <div>
         <header className="container-fluid">
-          <p>Header</p>
+          <h1>Beyond the Spectrum</h1>
         </header>
 
         <div className="container-fluid">
           <div className="row">
             <div className="col-xs-12 col-md-2">
-              <label><input type="checkbox" checked={this.state.filters.resources.book} onChange={this.onChangeFilter('book')}/> Book</label><br/>
-              <label><input type="checkbox" checked={this.state.filters.resources.website} onChange={this.onChangeFilter('website')}/> Website</label><br/>
+              <p>Filter Resources:</p>
+              <label><input type="checkbox" checked={this.state.filters.resources.book} onChange={this.handleChangeFilter('book')}/> Book</label><br/>
+              <label><input type="checkbox" checked={this.state.filters.resources.website} onChange={this.handleChangeFilter('website')}/> Website</label><br/>
             </div>
             <div className="col-xs-12 col-md-4" style={{backgroundColor: '#dadada'}}>
-              {
-                this.state.resources
-                  .filter(resource => {
-                    console.log(filtersArray);
-                    console.log(filtersArray.indexOf(resource.resourceType) > -1);
-                    return filtersArray.indexOf(resource.resourceType) > -1;
-                  })
-                  .map(resource => {
-                    console.table({resource});
-                      return <ResourceListView key={resource.id} data={resource} />
-                  })
-              }
+              { renderResourceList() }
             </div>
             <div className="col-xs-12 col-md-6">
-              <Match pattern={`${this.props.pathname}selected`} render={() => (
-                <h3>You selected an item</h3>
+              <Match pattern={`${this.props.pathname}:resourceId`} render={(props) => (
+                <ResourceDetails {...props} resources={this.state.resources} />
               )}/>
               <Miss render={() => (
-                <h3>Select one</h3>
+                <p>Select a resource to see more details here.</p>
               )}/>
             </div>
           </div>
@@ -102,6 +124,10 @@ class App extends React.Component {
       </div>
     );
   }
+}
+
+App.contextTypes = {
+  router: React.PropTypes.object
 }
 
 export default App;
