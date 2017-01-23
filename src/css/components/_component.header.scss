@@ -1,0 +1,49 @@
+$c-name: '.c-Header';
+
+#{$c-name} {
+  background-color: #7fa09e;
+  border-bottom: 0.5em solid #b3c1c0;
+  font-family: $second-font-family;
+}
+
+#{$c-name}__top {
+  background-color: #4b615f;
+  padding: 0.5rem 0;
+}
+
+#{$c-name}__logo {
+  background-color: $prim-c;
+  border-radius: 2px;
+  display: inline-block;
+  font-size: 1.4em;
+  margin: 0;
+  padding: 0.2em 0.5rem;
+  vertical-align: middle;
+}
+
+  #{$c-name}__logo-link {
+    color: #fff;
+    text-decoration: none;
+  }
+
+#{$c-name}__nav {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#{$c-name}__list {
+  list-style-type: none;
+}
+
+#{$c-name}__link {
+  color: #fff;
+  text-decoration: none;
+}
+
+
+#{$c-name}__bg-img {
+  background: url('/img/sunrise.jpg') 50% 50% no-repeat;
+  background-size: cover;
+  height: 10rem;
+  opacity: 0.3;
+}

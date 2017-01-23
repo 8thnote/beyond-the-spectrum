@@ -2379,3 +2379,102 @@ template {
     order: -1; }
   .last-lg {
     order: 1; } }
+
+* {
+  box-sizing: border-box; }
+
+body {
+  background-color: #39C4B9;
+  color: #647574;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 0.5em 0; }
+
+p {
+  margin: 0 0 0.5em 0; }
+
+.c-Header {
+  background-color: #7fa09e;
+  border-bottom: 0.5em solid #b3c1c0;
+  font-family: "Lato", sans-serif; }
+
+.c-Header__top {
+  background-color: #4b615f;
+  padding: 0.5rem 0; }
+
+.c-Header__logo {
+  background-color: #CF2B64;
+  border-radius: 2px;
+  display: inline-block;
+  font-size: 1.4em;
+  margin: 0;
+  padding: 0.2em 0.5rem;
+  vertical-align: middle; }
+
+.c-Header__logo-link {
+  color: #fff;
+  text-decoration: none; }
+
+.c-Header__nav {
+  display: inline-block;
+  vertical-align: middle; }
+
+.c-Header__list {
+  list-style-type: none; }
+
+.c-Header__link {
+  color: #fff;
+  text-decoration: none; }
+
+.c-Header__bg-img {
+  background: url("/img/sunrise.jpg") 50% 50% no-repeat;
+  background-size: cover;
+  height: 10rem;
+  opacity: 0.3; }
+
+.c-Resource-page__resource-list {
+  padding-top: 1em; }
+
+.c-Resource-page__resource-details {
+  margin: -2em -2rem 1em 0;
+  padding-left: 1rem; }
+
+.c-Resource {
+  background-color: #f3ede0;
+  border-radius: 2px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  color: #69614d;
+  display: block;
+  margin-bottom: 0.5em;
+  padding: 0.5em 1rem;
+  text-decoration: none;
+  transition: transform 0.4s; }
+  .c-Resource:hover {
+    background-color: #f9f4eb; }
+  .c-Resource.is-Selected {
+    background-color: #f9f4eb;
+    transform: scale(1.05); }
+
+.c-Resource__title {
+  background-color: #F0BC30;
+  border-radius: 2px;
+  color: #fff;
+  display: block;
+  font-family: "Lato", sans-serif;
+  margin: 0 0 0.5em -1.2rem;
+  padding: 0.5em 1rem 0.5em 1.2rem;
+  text-shadow: 1px 1px 1px rgba(68, 65, 57, 0.8); }
+  .is-Selected .c-Resource__title {
+    background-color: #cf2b64; }
+
+.c-Details {
+  background-color: #fff;
+  padding: 3em 2rem;
+  position: relative; }
+
+.c-Details__title {
+  color: #cf2b64;
+  font-family: "Lato", sans-serif;
+  font-size: 2.5rem; }

@@ -77,22 +77,28 @@ class ResourcesPage extends React.Component {
 
 
     return (
-      <div className="row">
+      <div className="row c-Resource-page">
         <div className="col-xs-12 col-md-2">
-          <p>Filter Resources:</p>
-          <label><input type="checkbox" checked={this.state.filters.resources.book} onChange={this.handleChangeFilter('book')}/> Book</label><br/>
-          <label><input type="checkbox" checked={this.state.filters.resources.website} onChange={this.handleChangeFilter('website')}/> Website</label><br/>
+          <div className="c-Resource-page__filters">
+            <p>Filter Resources:</p>
+            <label><input type="checkbox" checked={this.state.filters.resources.book} onChange={this.handleChangeFilter('book')}/> Book</label><br/>
+            <label><input type="checkbox" checked={this.state.filters.resources.website} onChange={this.handleChangeFilter('website')}/> Website</label>
+          </div>
         </div>
-        <div className="col-xs-12 col-md-4" style={{backgroundColor: '#dadada'}}>
-          { renderResourceList() }
+        <div className="col-xs-12 col-md-4">
+          <div className="c-Resource-page__resource-list">
+            { renderResourceList() }
+          </div>
         </div>
         <div className="col-xs-12 col-md-6">
-          <Match pattern={`${this.props.pathname}/:resourceId`} render={(props) => (
-            <ResourceDetails {...props} resources={this.state.resources} />
-          )}/>
-          <Miss render={() => (
-            <p>Select a resource to see more details here.</p>
-          )}/>
+          <div className="c-Resource-page__resource-details">
+            <Match pattern={`${this.props.pathname}/:resourceId`} render={(props) => (
+              <ResourceDetails {...props} resources={this.state.resources} />
+            )}/>
+            <Miss render={() => (
+              <p>Select a resource to see more details here.</p>
+            )}/>
+          </div>
         </div>
       </div>
     );

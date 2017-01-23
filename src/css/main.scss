@@ -2,7 +2,14 @@
 @include normalize();
 
 // Flexbox Grid Settings Would Go Here
-// Test
 
 @import '../../node_modules/flexboxgrid-sass/flexboxgrid';
 
+
+
+// Custom styles
+@import './settings/variables';
+
+@import './generic/generic';
+
+@import './components/all-components';

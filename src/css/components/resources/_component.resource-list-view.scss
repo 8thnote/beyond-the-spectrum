@@ -1,0 +1,37 @@
+$c-name: '.c-Resource';
+
+#{$c-name} {
+  background-color: #f3ede0;
+  border-radius: 2px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  color: #69614d;
+  display: block;
+  margin-bottom: 0.5em;
+  padding: 0.5em 1rem;
+  text-decoration: none;
+  transition: transform 0.4s;
+
+  &:hover {
+    background-color: #f9f4eb;
+  }
+
+  &.is-Selected {
+    background-color: #f9f4eb;
+    transform: scale(1.05);
+  }
+}
+
+#{$c-name}__title {
+  background-color: #F0BC30;
+  border-radius: 2px;
+  color: #fff;
+  display: block;
+  font-family: $second-font-family;
+  margin: 0 0 0.5em -1.2rem;
+  padding: 0.5em 1rem 0.5em 1.2rem;
+  text-shadow: 1px 1px 1px rgba(68,65,57,0.8);
+
+  .is-Selected & {
+    background-color: #cf2b64;
+  }
+}
