@@ -2434,6 +2434,13 @@ p {
   height: 10rem;
   opacity: 0.3; }
 
+.c-Resource-page__filters {
+  background-color: rgba(243, 237, 224, 0.9);
+  border-radius: 2px;
+  margin-top: 1em;
+  padding: 1em 1rem;
+  width: 90%; }
+
 .c-Resource-page__resource-list {
   padding-top: 1em; }
 

@@ -81,8 +81,8 @@ class ResourcesPage extends React.Component {
         <div className="col-xs-12 col-md-2">
           <div className="c-Resource-page__filters">
             <p>Filter Resources:</p>
-            <label><input type="checkbox" checked={this.state.filters.resources.book} onChange={this.handleChangeFilter('book')}/> Book</label><br/>
-            <label><input type="checkbox" checked={this.state.filters.resources.website} onChange={this.handleChangeFilter('website')}/> Website</label>
+            <label><input type="checkbox" checked={this.state.filters.resources.book} onChange={this.handleChangeFilter('book')}/> Books</label><br/>
+            <label><input type="checkbox" checked={this.state.filters.resources.website} onChange={this.handleChangeFilter('website')}/> Websites</label>
           </div>
         </div>
         <div className="col-xs-12 col-md-4">
