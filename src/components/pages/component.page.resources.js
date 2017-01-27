@@ -1,58 +1,57 @@
 import React from 'react';
 import { Match, Miss, Link } from 'react-router';
 import update from 'immutability-helper';
+import base from '../../base';
 
 import ResourceListView from '../fragments/component.resource-list-view';
 import ResourceDetails from '../fragments/component.resource-details';
 
-const initialState = {
-  resources: [
-    {
-      id: 1,
-      title: 'Resource 1',
-      description: 'Description 1',
-      resourceType: 'book'
-    },
-    {
-      id: 2,
-      title: 'Resource 2',
-      description: 'Description 2',
-      resourceType: 'book'
-    },
-    {
-      id: 3,
-      title: 'Resource 3',
-      description: 'Description 3',
-      resourceType: 'website'
-    }
-  ],
-  filters: {
-    resources: {
-      book: false,
-      website: false
-    },
-    resourcesArray: []
-  },
-  selectedResource: null
-};
+
 
 class ResourcesPage extends React.Component {
   constructor () {
     super();
 
     this.handleChangeFilter = this.handleChangeFilter.bind(this);
+  }
 
-    this.state = initialState;
+  state = {
+    resources: {},
+    filters: {
+      resources: {
+        book: false,
+        website: false
+      },
+      resourcesArray: []
+    },
+    selectedResource: null
+  }
+
+  componentWillMount() {
+    this.ref = base.syncState('/resources/resources_collection', {
+      context: this,
+      state: 'resources'
+    });
+
+    console.log(this.ref);
+  }
+
+  componentWillUnmount() {
+    base.removeBinding(this.ref);
   }
 
   render() {
     var filtersArray = Object.keys(this.state.filters.resources);
     filtersArray = filtersArray.filter(filter => this.state.filters.resources[filter] === true);
-    var resources = this.state.resources;
 
-    function renderResourceList () {
+    var resources = [];
+    Object.keys(this.state.resources).forEach((key, index) => {
+      resources.push(this.state.resources[key]);
+    });
+
+    function renderResourceList (resources) {
       if (filtersArray.length > 0) {
-        resources = resources
+        var resources = resources
           .filter(resource => {
             if (filtersArray.length > 0) {
               return filtersArray.indexOf(resource.resourceType) > -1;
@@ -87,13 +86,13 @@ class ResourcesPage extends React.Component {
         </div>
         <div className="col-xs-12 col-md-4">
           <div className="c-Resource-page__resource-list">
-            { renderResourceList() }
+            { renderResourceList(resources) }
           </div>
         </div>
         <div className="col-xs-12 col-md-6">
           <div className="c-Resource-page__resource-details">
             <Match pattern={`${this.props.pathname}/:resourceId`} render={(props) => (
-              <ResourceDetails {...props} resources={this.state.resources} />
+              <ResourceDetails {...props} resources={resources} />
             )}/>
             <Miss render={() => (
               <p>Select a resource to see more details here.</p>
