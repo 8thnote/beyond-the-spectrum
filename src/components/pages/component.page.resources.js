@@ -32,8 +32,6 @@ class ResourcesPage extends React.Component {
       context: this,
       state: 'resources'
     });
-
-    console.log(this.ref);
   }
 
   componentWillUnmount() {
@@ -54,7 +52,7 @@ class ResourcesPage extends React.Component {
         var resources = resources
           .filter(resource => {
             if (filtersArray.length > 0) {
-              return filtersArray.indexOf(resource.resourceType) > -1;
+              return filtersArray.indexOf(resource.category) > -1;
             } else {
               return true;
             }
@@ -91,9 +89,19 @@ class ResourcesPage extends React.Component {
         </div>
         <div className="col-xs-12 col-md-6">
           <div className="c-Resource-page__resource-details">
-            <Match pattern={`${this.props.pathname}/:resourceId`} render={(props) => (
-              <ResourceDetails {...props} resources={resources} />
-            )}/>
+            <Match pattern={`${this.props.pathname}/:resourceId`}
+              render={
+                (props) => {
+                  if (resources.length > 0) {
+                    return (
+                      <ResourceDetails {...props} resources={resources} />
+                    )
+                  } else {
+                    return null;
+                  }
+                }
+              }
+            />
             <Miss render={() => (
               <p>Select a resource to see more details here.</p>
             )}/>

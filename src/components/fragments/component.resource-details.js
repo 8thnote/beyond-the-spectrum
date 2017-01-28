@@ -2,6 +2,10 @@ import React from 'react';
 
 class ResourceDetails extends React.Component {
   render() {
+    if (!(this.props.resources.length > 0)) {
+      return null;
+    }
+
     const resource = (() => {
       return this.props.resources.find((resource) => {
         return resource.id === parseInt(this.props.params.resourceId, 10);
