@@ -49,7 +49,7 @@ class ResourcesPage extends React.Component {
 
     function renderResourceList (resources) {
       if (filtersArray.length > 0) {
-        var resources = resources
+        resources = resources
           .filter(resource => {
             if (filtersArray.length > 0) {
               return filtersArray.indexOf(resource.category) > -1;
@@ -94,7 +94,7 @@ class ResourcesPage extends React.Component {
                 (props) => {
                   if (resources.length > 0) {
                     return (
-                      <ResourceDetails {...props} resources={resources} />
+                        <ResourceDetails {...props} resources={resources} />
                     )
                   } else {
                     return null;

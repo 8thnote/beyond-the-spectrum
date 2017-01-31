@@ -10,12 +10,15 @@
   },
   "dependencies": {
     "flexboxgrid-sass": "^8.0.5",
+    "font-awesome": "^4.7.0",
     "immutability-helper": "^2.1.1",
     "material-ui": "^0.16.6",
     "normalize-scss": "^6.0.0",
     "re-base": "^2.5.2",
     "react": "^15.4.2",
+    "react-addons-css-transition-group": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-motion": "^0.4.7",
     "react-router": "^4.0.0-alpha.6",
     "react-tap-event-plugin": "^2.0.1"
   },

@@ -5,6 +5,7 @@ import { BrowserRouter, Match, Miss } from 'react-router';
 import MasterLayout from './components/layout/component.layout.master';
 import NotFound from './NotFound';
 
+import 'font-awesome/css/font-awesome.css';
 import './css/main.css';
 
 const Root = () => {

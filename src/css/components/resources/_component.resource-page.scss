@@ -1,8 +1,8 @@
 $c-name: '.c-Resource-page';
 
 #{$c-name}__filters {
-  background-color: rgba(#f3ede0, 0.9);
-  border-radius: 2px;
+  background-color: transparentize($bg2-c, 0.1);
+  border-radius: $global-border-radius;
   margin-top: 1em;
   padding: 1em 1rem;
   width: 90%;

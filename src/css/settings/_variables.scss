@@ -1,14 +1,30 @@
-// Colors
-$prim-c: #CF2B64;
-
 // Base Color Palette
-$color1: hsla(339%, 66%, 49%, 1); // cherry
-$color2: hsla(44%, 86%, 56%, 1); // saffron (yellow)
-$color3: hsla(159%, 59%, 38%, 1); // illuminating emerald (green)
-$color4: hsla(175%, 55%, 50%, 1); // maximum blue green
-$color5: hsla(84%, 47%, 71%, 1); // medium spring bud (light green)
+$cherry: hsla(339, 66%, 49%, 1); // cherry
+$saffron: hsla(44, 86%, 56%, 1); // saffron (yellow)
+$emerald: hsla(159, 59%, 38%, 1); // illuminating emerald (green)
+$blue-green: hsla(175, 55%, 50%, 1); // maximum blue green
+$spring-bud: hsla(84, 47%, 71%, 1); // medium spring bud (light green)
+$white: hsla(0, 0, 100%, 1);
+$black: hsla(0, 0, 0, 1);
+$ecru-white: hsla(41, 44%, 92%, 1); // ecru white (cream/ivory)
 
+
+// Colors
+$text-c: darken(desaturate($blue-green, 47%), 7%);
+$accent1-c: $cherry;
+$accent2-c: $saffron;
+$shadow-on-accent2: rgba(68,65,57,0.8);
+$bg1-c: $blue-green;
+$bg2-c: $ecru-white;
+$light: $white;
+$dark: $black;
+$dark-gray: darken($text-c, 14%);
+$light-gray: lighten($text-c, 30%);
 
 // Fonts
 $main-font-family: 'Open Sans', sans-serif;
 $second-font-family: 'Lato', sans-serif;
+
+
+// Misc
+$global-border-radius: 3px;

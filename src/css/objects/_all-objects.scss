@@ -1,1 +1,27 @@
+$o-name: '.o-Btn';
 
+#{$o-name} {
+  background-color: $accent1-c;
+  border-radius: $global-border-radius;
+  box-shadow: 0 1px 3px 2px transparentize($dark, 0.8);
+  color: $light;
+  display: inline-block;
+  margin: 1em 0;
+  padding: 0.5em 1em;
+  text-decoration: none;
+
+  &:hover {
+    background-color: lighten($accent1-c, 7%);
+    box-shadow: 0 0 1px 1px transparentize($dark, 0.7);
+    color: $light;
+    text-shadow: 1px 1px 1px transparentize($dark, 0.6);
+  }
+
+  &:active {
+    background-color: darken(saturate($accent1-c, 10%), 7%);
+  }
+
+  &:focus {
+    background-color: darken(saturate($accent1-c, 5%), 3%);
+  }
+}

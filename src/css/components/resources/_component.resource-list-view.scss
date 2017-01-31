@@ -1,10 +1,10 @@
 $c-name: '.c-Resource';
 
 #{$c-name} {
-  background-color: #f3ede0;
-  border-radius: 2px;
-  box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  color: #69614d;
+  background-color: $bg2-c;
+  border-radius: $global-border-radius;
+  box-shadow: 1px 1px 3px transparentize($dark, 0.8);
+  color: $text-c;
   display: block;
   margin-bottom: 0.5em;
   padding: 0.5em 1rem;
@@ -12,26 +12,35 @@ $c-name: '.c-Resource';
   transition: transform 0.4s;
 
   &:hover {
-    background-color: #f9f4eb;
+    background-color: lighten($bg2-c, 5%);
   }
 
   &.is-Selected {
-    background-color: #f9f4eb;
+    background-color: lighten($bg2-c, 5%);
     transform: scale(1.05);
   }
 }
 
 #{$c-name}__title {
-  background-color: #F0BC30;
+  background-color: $accent2-c;
   border-radius: 2px;
-  color: #fff;
+  color: $light;
   display: block;
   font-family: $second-font-family;
   margin: 0 0 0.5em -1.2rem;
   padding: 0.5em 1rem 0.5em 1.2rem;
-  text-shadow: 1px 1px 1px rgba(68,65,57,0.8);
+  text-shadow: 1px 1px 1px $shadow-on-accent2;
 
   .is-Selected & {
-    background-color: #cf2b64;
+    background-color: $accent1-c;
+  }
+}
+
+#{$c-name}__category {
+  float: right;
+  font-size: 1.2em;
+
+  &--website {
+    font-size: 0.9em;
   }
 }

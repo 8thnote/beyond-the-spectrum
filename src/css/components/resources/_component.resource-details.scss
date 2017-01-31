@@ -1,13 +1,54 @@
 $c-name: '.c-Details';
 
 #{$c-name} {
-  background-color: #fff;
+  background-color: $light;
+  border-top-left-radius: $global-border-radius;
+  border-bottom-left-radius: $global-border-radius;
+  font-size: 1rem;
   padding: 3em 2rem;
   position: relative;
 }
 
 #{$c-name}__title {
-  color: #cf2b64;
+  color: $accent1-c;
   font-family: $second-font-family;
-  font-size: 2.5rem;
+  font-size: 2.5em;
+}
+
+#{$c-name}__category {
+  background-color: $text-c;
+  border-radius: 50%;
+  color: $light;
+  display: inline-block;
+  float: right;
+  font-size: 1em;
+  position: relative;
+  top: -1.5rem;
+  width: 4.7rem; height: 4.7rem;
+
+  &--website {
+    font-size: 0.5em;
+  }
+
+  i {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+#{$c-name}__description {
+  margin-bottom: 2em;
+  max-height: 12em;
+  overflow-y: auto;
+  padding-right: 1rem;
+  width: 100%;
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+#{$c-name}__purchase {
+  font-size: 1em;
 }

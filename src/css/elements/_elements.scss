@@ -1,0 +1,15 @@
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  margin: 0 0 0.5em 0;
+}
+
+p {
+  line-height: 1.8;
+  margin: 0 0 0.5em 0;
+}
+
+a {
+  color: $emerald;
+  transform: scale(1);
+  -webkit-backface-visibility: hidden;
+}

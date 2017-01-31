@@ -2383,29 +2383,73 @@ template {
 * {
   box-sizing: border-box; }
 
+html, body {
+  font-size: 100%;
+  height: 100%; }
+
 body {
-  background-color: #39C4B9;
-  color: #647574;
+  background-color: #39c6ba;
+  color: #657675;
   font-family: 'Open Sans', sans-serif;
-  font-weight: 400; }
+  font-weight: 400;
+  position: relative; }
+  body:after {
+    background: url("/img/nami.png") 0 0 repeat;
+    content: '';
+    opacity: 0.1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; }
+
+#main {
+  position: relative;
+  z-index: 1; }
 
 h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
   margin: 0 0 0.5em 0; }
 
 p {
+  line-height: 1.8;
   margin: 0 0 0.5em 0; }
 
+a {
+  color: #289a72;
+  transform: scale(1);
+  -webkit-backface-visibility: hidden; }
+
+.o-Btn {
+  background-color: #cf2a64;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px 2px rgba(0, 0, 0, 0.2);
+  color: white;
+  display: inline-block;
+  margin: 1em 0;
+  padding: 0.5em 1em;
+  text-decoration: none; }
+  .o-Btn:hover {
+    background-color: #d94579;
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.3);
+    color: white;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4); }
+  .o-Btn:active {
+    background-color: #bc1a53; }
+  .o-Btn:focus {
+    background-color: #c9225c; }
+
 .c-Header {
-  background-color: #7fa09e;
-  border-bottom: 0.5em solid #b3c1c0;
+  background-color: #657675;
+  border-bottom: 0.5em solid #b5c0bf;
   font-family: "Lato", sans-serif; }
 
 .c-Header__top {
-  background-color: #4b615f;
+  background-color: #44504f;
   padding: 0.5rem 0; }
 
 .c-Header__logo {
-  background-color: #CF2B64;
+  background-color: #cf2a64;
   border-radius: 2px;
   display: inline-block;
   font-size: 1.4em;
@@ -2414,7 +2458,7 @@ p {
   vertical-align: middle; }
 
 .c-Header__logo-link {
-  color: #fff;
+  color: white;
   text-decoration: none; }
 
 .c-Header__nav {
@@ -2435,8 +2479,8 @@ p {
   opacity: 0.3; }
 
 .c-Resource-page__filters {
-  background-color: rgba(243, 237, 224, 0.9);
-  border-radius: 2px;
+  background-color: rgba(244, 238, 226, 0.9);
+  border-radius: 3px;
   margin-top: 1em;
   padding: 1em 1rem;
   width: 90%; }
@@ -2449,39 +2493,79 @@ p {
   padding-left: 1rem; }
 
 .c-Resource {
-  background-color: #f3ede0;
-  border-radius: 2px;
+  background-color: #f4eee2;
+  border-radius: 3px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-  color: #69614d;
+  color: #657675;
   display: block;
   margin-bottom: 0.5em;
   padding: 0.5em 1rem;
   text-decoration: none;
   transition: transform 0.4s; }
   .c-Resource:hover {
-    background-color: #f9f4eb; }
+    background-color: #fbf9f4; }
   .c-Resource.is-Selected {
-    background-color: #f9f4eb;
+    background-color: #fbf9f4;
     transform: scale(1.05); }
 
 .c-Resource__title {
-  background-color: #F0BC30;
+  background-color: #efbc2e;
   border-radius: 2px;
-  color: #fff;
+  color: white;
   display: block;
   font-family: "Lato", sans-serif;
   margin: 0 0 0.5em -1.2rem;
   padding: 0.5em 1rem 0.5em 1.2rem;
   text-shadow: 1px 1px 1px rgba(68, 65, 57, 0.8); }
   .is-Selected .c-Resource__title {
-    background-color: #cf2b64; }
+    background-color: #cf2a64; }
+
+.c-Resource__category {
+  float: right;
+  font-size: 1.2em; }
+  .c-Resource__category--website {
+    font-size: 0.9em; }
 
 .c-Details {
-  background-color: #fff;
+  background-color: white;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  font-size: 1rem;
   padding: 3em 2rem;
   position: relative; }
 
 .c-Details__title {
-  color: #cf2b64;
+  color: #cf2a64;
   font-family: "Lato", sans-serif;
-  font-size: 2.5rem; }
+  font-size: 2.5em; }
+
+.c-Details__category {
+  background-color: #657675;
+  border-radius: 50%;
+  color: white;
+  display: inline-block;
+  float: right;
+  font-size: 1em;
+  position: relative;
+  top: -1.5rem;
+  width: 4.7rem;
+  height: 4.7rem; }
+  .c-Details__category--website {
+    font-size: 0.5em; }
+  .c-Details__category i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+
+.c-Details__description {
+  margin-bottom: 2em;
+  max-height: 12em;
+  overflow-y: auto;
+  padding-right: 1rem;
+  width: 100%; }
+  .c-Details__description p:last-child {
+    margin-bottom: 0; }
+
+.c-Details__purchase {
+  font-size: 1em; }

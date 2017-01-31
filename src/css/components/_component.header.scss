@@ -1,18 +1,18 @@
 $c-name: '.c-Header';
 
 #{$c-name} {
-  background-color: #7fa09e;
-  border-bottom: 0.5em solid #b3c1c0;
+  background-color: $text-c;
+  border-bottom: 0.5em solid $light-gray;
   font-family: $second-font-family;
 }
 
 #{$c-name}__top {
-  background-color: #4b615f;
+  background-color: $dark-gray;
   padding: 0.5rem 0;
 }
 
 #{$c-name}__logo {
-  background-color: $prim-c;
+  background-color: $accent1-c;
   border-radius: 2px;
   display: inline-block;
   font-size: 1.4em;
@@ -22,7 +22,7 @@ $c-name: '.c-Header';
 }
 
   #{$c-name}__logo-link {
-    color: #fff;
+    color: $light;
     text-decoration: none;
   }
 
