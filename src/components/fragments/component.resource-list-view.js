@@ -1,4 +1,7 @@
 import React from 'react';
+import {
+  NavLink
+} from 'react-router-dom'
 
 class ResourceListView extends React.Component {
   render() {
@@ -18,19 +21,21 @@ class ResourceListView extends React.Component {
     }
 
     return (
-      <a onClick={this.props.onClick} href={this.props.href} className={'c-Resource' + (this.props.selected ? ' is-Selected' : '')}>
-        <h3 className="c-Resource__title">
-          { title }
-          { renderCatIcon(category) }
-        </h3>
-        <p className="c-Resource__rating">
-          { rating ?
-              `rating: ${rating} / 5`
+      <NavLink to={`${this.props.match.url}/${this.props.data.id}`}>
+        <div className="c-Resource">
+          <h3 className="c-Resource__title">
+            { title }
+            { renderCatIcon(category) }
+          </h3>
+          <p className="c-Resource__rating">
+            { rating ?
+                `rating: ${rating} / 5`
 
-              : 'not rated yet'
-          }
-        </p>
-      </a>
+                : 'not rated yet'
+            }
+          </p>
+        </div>
+      </NavLink>
     );
   }
 }

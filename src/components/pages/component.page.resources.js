@@ -1,5 +1,7 @@
 import React from 'react';
-import { Match, Miss, Link } from 'react-router';
+import {
+  Route
+} from 'react-router-dom'
 import update from 'immutability-helper';
 import base from '../../base';
 
@@ -47,7 +49,7 @@ class ResourcesPage extends React.Component {
       resources.push(this.state.resources[key]);
     });
 
-    function renderResourceList (resources) {
+    function renderResourceList (resources, match) {
       if (filtersArray.length > 0) {
         resources = resources
           .filter(resource => {
@@ -62,10 +64,7 @@ class ResourcesPage extends React.Component {
       resources = resources
         .map(resource => {
           return (
-            <Link to={`/resources/${resource.id}`} key={resource.id}>{
-              ({isActive, href, onClick}) =>
-                <ResourceListView data={resource} onClick={onClick} href={href} selected={isActive} />
-            }</Link>
+            <ResourceListView match={match} data={resource} key={resource.id} />
           )
         });
 
@@ -84,17 +83,17 @@ class ResourcesPage extends React.Component {
         </div>
         <div className="col-xs-12 col-md-4">
           <div className="c-Resource-page__resource-list">
-            { renderResourceList(resources) }
+            { renderResourceList(resources, this.props.match) }
           </div>
         </div>
         <div className="col-xs-12 col-md-6">
           <div className="c-Resource-page__resource-details">
-            <Match pattern={`${this.props.pathname}/:resourceId`}
+            <Route path={`${this.props.match.url}/:resourceId`}
               render={
-                (props) => {
+                matchProps => {
                   if (resources.length > 0) {
                     return (
-                        <ResourceDetails {...props} resources={resources} />
+                        <ResourceDetails {...matchProps} resources={resources} />
                     )
                   } else {
                     return null;
@@ -102,9 +101,6 @@ class ResourcesPage extends React.Component {
                 }
               }
             />
-            <Miss render={() => (
-              <p>Select a resource to see more details here.</p>
-            )}/>
           </div>
         </div>
       </div>
