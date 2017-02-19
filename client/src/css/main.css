@@ -2417,6 +2417,7 @@ p {
 
 a {
   color: #289a72;
+  text-decoration: none;
   transform: scale(1);
   -webkit-backface-visibility: hidden; }
 
@@ -2456,10 +2457,9 @@ a {
   margin: 0;
   padding: 0.2em 0.5rem;
   vertical-align: middle; }
-
-.c-Header__logo-link {
-  color: white;
-  text-decoration: none; }
+  .c-Header__logo a {
+    color: white;
+    text-decoration: none; }
 
 .c-Header__nav {
   display: inline-block;

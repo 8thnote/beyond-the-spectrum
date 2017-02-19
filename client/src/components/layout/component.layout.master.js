@@ -1,8 +1,9 @@
 import React from 'react';
 import {
   Route,
-  NavLink
-} from 'react-router-dom'
+  NavLink,
+  Link
+} from 'react-router-dom';
 
 import HomePage from '../pages/component.page.home';
 import ResourcesPage from '../pages/component.page.resources';
@@ -13,11 +14,9 @@ const MasterLayout = ({ match }) => {
       <header className="c-Header">
         <div className="c-Header__top">
           <div className="container-fluid">
-            <NavLink to="/">
-              <h1 className="c-Header__logo">
-                Beyond the Spectrum
-              </h1>
-            </NavLink>
+            <h1 className="c-Header__logo">
+              <Link to="/">Beyond the Spectrum</Link>
+            </h1>
             <nav className="c-Header__nav">
               <ul className="c-Header__list">
                 <li className="c-Header__item">

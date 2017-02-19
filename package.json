@@ -5,7 +5,7 @@
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "cd server && nodemon server.js",
-    "client": "cd client && npm start"
+    "client": "cd client && npm run watch"
   },
   "repository": {
     "type": "git",

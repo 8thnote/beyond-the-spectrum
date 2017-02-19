@@ -19,12 +19,12 @@ $c-name: '.c-Header';
   margin: 0;
   padding: 0.2em 0.5rem;
   vertical-align: middle;
-}
 
-  #{$c-name}__logo-link {
+  a {
     color: $light;
     text-decoration: none;
   }
+}
 
 #{$c-name}__nav {
   display: inline-block;
