@@ -2385,7 +2385,7 @@ template {
 
 html, body {
   font-size: 100%;
-  height: 100%; }
+  min-height: 100vh; }
 
 body {
   background-color: #39c6ba;
@@ -2393,15 +2393,6 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
   position: relative; }
-  body:after {
-    background: url("/img/nami.png") 0 0 repeat;
-    content: '';
-    opacity: 0.1;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0; }
 
 #main {
   position: relative;
@@ -2439,6 +2430,19 @@ a {
     background-color: #bc1a53; }
   .o-Btn:focus {
     background-color: #c9225c; }
+
+.c-Site {
+  padding-bottom: 4rem; }
+
+.c-Site__bg {
+  background: url("/img/nami.png") 0 0 repeat;
+  content: '';
+  opacity: 0.1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; }
 
 .c-Header {
   background-color: #657675;
@@ -2493,20 +2497,21 @@ a {
   padding-left: 1rem; }
 
 .c-Resource {
-  background-color: #f4eee2;
-  border-radius: 3px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   color: #657675;
   display: block;
   margin-bottom: 0.5em;
-  padding: 0.5em 1rem;
   text-decoration: none;
   transition: transform 0.4s; }
-  .c-Resource:hover {
-    background-color: #fbf9f4; }
-  .c-Resource.is-Selected {
-    background-color: #fbf9f4;
-    transform: scale(1.05); }
+  .c-Resource a {
+    background-color: #f4eee2;
+    border-radius: 3px;
+    display: block;
+    padding: 0.5em 1rem; }
+    .c-Resource a:hover {
+      background-color: #fbf9f4; }
+    .c-Resource a.is-Active {
+      background-color: white; }
 
 .c-Resource__title {
   background-color: #efbc2e;

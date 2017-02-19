@@ -21,8 +21,10 @@ class ResourceListView extends React.Component {
     }
 
     return (
-      <NavLink to={`${this.props.match.url}/${this.props.data._id}`}>
-        <div className="c-Resource">
+      <div className="c-Resource">
+        <NavLink to={`${this.props.match.url}/${this.props.data._id}`}
+          activeClassName="is-Active"
+        >
           <h3 className="c-Resource__title">
             { title }
             { renderCatIcon(category) }
@@ -34,8 +36,8 @@ class ResourceListView extends React.Component {
                 : 'not rated yet'
             }
           </p>
-        </div>
-      </NavLink>
+        </NavLink>
+      </div>
     );
   }
 }

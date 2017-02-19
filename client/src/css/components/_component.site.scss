@@ -1,0 +1,13 @@
+$c-name: '.c-Site';
+
+#{$c-name} {
+  padding-bottom: 4rem;
+}
+
+#{$c-name}__bg {
+  background: url('/img/nami.png') 0 0 repeat;
+  content: '';
+  opacity: 0.1;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+}
