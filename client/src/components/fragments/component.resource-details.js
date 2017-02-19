@@ -8,7 +8,7 @@ class ResourceDetails extends React.Component {
 
     const resource = (() => {
       return this.props.resources.find((resource) => {
-        return resource.id === parseInt(this.props.match.params.resourceId, 10);
+        return resource._id === this.props.match.params.resourceId;
       });
     })();
 

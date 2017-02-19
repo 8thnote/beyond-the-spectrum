@@ -3,7 +3,6 @@ import {
   Route
 } from 'react-router-dom';
 import update from 'immutability-helper';
-import base from '../../base';
 import axios from 'axios';
 
 import ResourceListView from '../fragments/component.resource-list-view';
@@ -30,35 +29,37 @@ class ResourcesPage extends React.Component {
     selectedResource: null
   }
 
-  componentWillMount() {
-    this.ref = base.syncState('/resources/resources_collection', {
-      context: this,
-      state: 'resources'
-    });
-  }
+  // componentWillMount() {
+  //   this.ref = base.syncState('/resources/resources_collection', {
+  //     context: this,
+  //     state: 'resources'
+  //   });
+  // }
 
-  componentWillUnmount() {
-    base.removeBinding(this.ref);
-  }
+  // componentWillUnmount() {
+  //   base.removeBinding(this.ref);
+  // }
 
   componentDidMount() {
-    // axios.get('/api/resource')
+    axios.get('/api/resource')
+      .then(res => {
+        this.setState({
+          resources: res.data
+        })
+      });
+
+    // let data = {
+    //   category: 'book',
+    //   description: 'test description',
+    //   title: 'test title',
+    //   url: '/test-title/',
+    //   website_link: 'http://google.com/'
+    // }
+
+    // axios.post('/api/resource', data)
     //   .then(res => {
     //     console.log(res);
     //   });
-
-    let data = {
-      category: 'book',
-      description: 'test description',
-      title: 'test title',
-      url: '/test-title/',
-      website_link: 'http://google.com/'
-    }
-
-    axios.post('/api/resource', data)
-      .then(res => {
-        console.log(res);
-      });
   }
 
   render() {
@@ -85,7 +86,7 @@ class ResourcesPage extends React.Component {
       resources = resources
         .map(resource => {
           return (
-            <ResourceListView match={match} data={resource} key={resource.id} />
+            <ResourceListView match={match} data={resource} key={resource._id} />
           )
         });
 
