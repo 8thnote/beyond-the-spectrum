@@ -1,9 +1,10 @@
 import React from 'react';
 import {
   Route
-} from 'react-router-dom'
+} from 'react-router-dom';
 import update from 'immutability-helper';
 import base from '../../base';
+import axios from 'axios';
 
 import ResourceListView from '../fragments/component.resource-list-view';
 import ResourceDetails from '../fragments/component.resource-details';
@@ -38,6 +39,26 @@ class ResourcesPage extends React.Component {
 
   componentWillUnmount() {
     base.removeBinding(this.ref);
+  }
+
+  componentDidMount() {
+    // axios.get('/api/resource')
+    //   .then(res => {
+    //     console.log(res);
+    //   });
+
+    let data = {
+      category: 'book',
+      description: 'test description',
+      title: 'test title',
+      url: '/test-title/',
+      website_link: 'http://google.com/'
+    }
+
+    axios.post('/api/resource', data)
+      .then(res => {
+        console.log(res);
+      });
   }
 
   render() {
