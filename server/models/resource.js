@@ -1,6 +1,11 @@
 var mongoose = require('mongoose');
 
 var resourceSchema = mongoose.Schema({
+  approved: {
+    type: Boolean,
+    default: false,
+    required: true
+  },
   category: {
     type: String,
     required: true
