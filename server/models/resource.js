@@ -3,8 +3,7 @@ var mongoose = require('mongoose');
 var resourceSchema = mongoose.Schema({
   approved: {
     type: Boolean,
-    default: false,
-    required: true
+    default: false
   },
   category: {
     type: String,
@@ -28,7 +27,7 @@ var resourceSchema = mongoose.Schema({
   },
   url: {
     type: String,
-    required: true
+    default: ''
   },
   website_link: {
     type: String,
@@ -49,5 +48,7 @@ module.exports.getResourceById = function (_id, callback) {
 
 // Create Resource
 module.exports.createResource = function (resource, callback) {
+  // Do auth check here to allow approved true
+  resource.approved = false;
   Resource.create(resource, callback);
 }

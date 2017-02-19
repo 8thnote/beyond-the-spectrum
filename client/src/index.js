@@ -5,6 +5,18 @@ import {
   Route
 } from 'react-router-dom'
 
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
+
+const muiTheme = getMuiTheme({
+  fontFamily: "'Open Sans', sans-serif",
+  palette: {
+    primary1Color: "#289a72"
+  }
+});
+
 import MasterLayout from './components/layout/component.layout.master';
 // import NotFound from './NotFound';
 
@@ -13,11 +25,13 @@ import './css/main.css';
 
 const Root = () => {
   return (
-    <Router>
-      <div>
-        <Route path="/" component={MasterLayout} />
-      </div>
-    </Router>
+    <MuiThemeProvider muiTheme={muiTheme}>
+      <Router>
+        <div>
+          <Route path="/" component={MasterLayout} />
+        </div>
+      </Router>
+    </MuiThemeProvider>
   )
 }
 

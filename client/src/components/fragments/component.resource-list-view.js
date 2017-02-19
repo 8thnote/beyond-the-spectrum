@@ -22,7 +22,7 @@ class ResourceListView extends React.Component {
 
     return (
       <div className="c-Resource">
-        <NavLink to={`${this.props.match.url}/${this.props.data._id}`}
+        <NavLink to={`${this.props.match.path}details/${this.props.data._id}`}
           activeClassName="is-Active"
         >
           <h3 className="c-Resource__title">

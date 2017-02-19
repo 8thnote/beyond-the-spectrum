@@ -7,6 +7,7 @@ import axios from 'axios';
 
 import ResourceListView from '../fragments/component.resource-list-view';
 import ResourceDetails from '../fragments/component.resource-details';
+import SubmitResource from '../fragments/component.submit-resource';
 
 
 
@@ -15,30 +16,20 @@ class ResourcesPage extends React.Component {
     super();
 
     this.handleChangeFilter = this.handleChangeFilter.bind(this);
-  }
 
-  state = {
-    resources: {},
-    filters: {
-      resources: {
-        book: false,
-        website: false
+    this.state = {
+      resources: {},
+      filters: {
+        resources: {
+          book: false,
+          website: false
+        },
+        resourcesArray: []
       },
-      resourcesArray: []
-    },
-    selectedResource: null
+      selectedResource: null,
+      test: null
+    }
   }
-
-  // componentWillMount() {
-  //   this.ref = base.syncState('/resources/resources_collection', {
-  //     context: this,
-  //     state: 'resources'
-  //   });
-  // }
-
-  // componentWillUnmount() {
-  //   base.removeBinding(this.ref);
-  // }
 
   componentDidMount() {
     axios.get('/api/resource')
@@ -47,19 +38,6 @@ class ResourcesPage extends React.Component {
           resources: res.data
         })
       });
-
-    // let data = {
-    //   category: 'book',
-    //   description: 'test description',
-    //   title: 'test title',
-    //   url: '/test-title/',
-    //   website_link: 'http://google.com/'
-    // }
-
-    // axios.post('/api/resource', data)
-    //   .then(res => {
-    //     console.log(res);
-    //   });
   }
 
   render() {
@@ -110,7 +88,8 @@ class ResourcesPage extends React.Component {
         </div>
         <div className="col-xs-12 col-md-6">
           <div className="c-Resource-page__resource-details">
-            <Route path={`${this.props.match.url}/:resourceId`}
+            <Route path={`${this.props.match.url}/submit-resource/`} exact component={SubmitResource} />
+            <Route path={`${this.props.match.url}/details/:resourceId`}
               render={
                 matchProps => {
                   if (resources.length > 0) {

@@ -14,29 +14,43 @@ const MasterLayout = ({ match }) => {
       <header className="c-Header">
         <div className="c-Header__top">
           <div className="container-fluid">
-            <h1 className="c-Header__logo">
-              <Link to="/">Beyond the Spectrum</Link>
-            </h1>
-            <nav className="c-Header__nav">
-              <ul className="c-Header__list">
-                <li className="c-Header__item">
-                  <NavLink
-                    to="/resources"
-                    className="c-Header__link"
-                  >
-                    Resources
-                  </NavLink>
-                </li>
-                {/*
-                <li className="c-Header__item">
-                  <a href="#" className="c-Header__link">Submit a Resource</a>
-                </li>
-                <li className="c-Header__item">
-                  <a href="#" className="c-Header__link">About</a>
-                </li>
-                */}
-              </ul>
-            </nav>
+            <div className="row">
+              <div className="col-md-2 c-Header__logo-wrap">
+                <h1 className="c-Header__logo">
+                  <Link to="/">Beyond the Spectrum</Link>
+                </h1>
+              </div>
+              <nav className="col-md-8 c-Header__nav">
+                <ul className="o-List-bare c-Header__list">
+                  <li className="c-Header__item">
+                    <NavLink
+                      to="/resources/"
+                      className="c-Header__link"
+                      activeClassName="is-Active"
+                    >
+                      Resources
+                    </NavLink>
+                  </li>
+                  <li className="c-Header__item">
+                    <NavLink
+                      to="/resources/submit-resource/"
+                      className="c-Header__link"
+                      activeClassName="is-Active"
+                    >
+                      Submit a Resource
+                    </NavLink>
+                  </li>
+                  {/*
+                  <li className="c-Header__item">
+                    <a href="#" className="c-Header__link">Submit a Resource</a>
+                  </li>
+                  <li className="c-Header__item">
+                    <a href="#" className="c-Header__link">About</a>
+                  </li>
+                  */}
+                </ul>
+              </nav>
+            </div>
           </div>{/* /.container-fluid */}
         </div>{/* /.c-Header__top */}
         <div className="c-Header__bg-img"></div>
@@ -44,7 +58,7 @@ const MasterLayout = ({ match }) => {
 
       <div className="container-fluid">
         <Route path={`${match.url}`} exact component={HomePage} />
-        <Route path={`${match.url}resources`} render={matchProps => <ResourcesPage {...matchProps} />} />
+        <Route path={`${match.url}resources/`} render={matchProps => <ResourcesPage {...matchProps} />} />
       </div>
     </div>
   );

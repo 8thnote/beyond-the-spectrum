@@ -2433,6 +2433,19 @@ a {
   .o-Btn:focus {
     background-color: #c9225c; }
 
+.o-List-bare {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+
+.o-Form-btn-wrap {
+  padding: 2em 0.5rem;
+  width: 100%; }
+
+.o-Form-btn {
+  transform: scale(1.4);
+  transform-origin: 0 0; }
+
 .c-Site {
   padding-bottom: 4rem; }
 
@@ -2462,17 +2475,20 @@ a {
   font-size: 1.4em;
   margin: 0;
   padding: 0.2em 0.5rem;
-  vertical-align: middle; }
+  text-align: center;
+  vertical-align: middle;
+  width: 90%; }
   .c-Header__logo a {
     color: white;
     text-decoration: none; }
 
 .c-Header__nav {
-  display: inline-block;
-  vertical-align: middle; }
+  display: flex;
+  align-items: center; }
 
-.c-Header__list {
-  list-style-type: none; }
+.c-Header__item {
+  display: inline-block;
+  margin-right: 1.5em; }
 
 .c-Header__link {
   color: #fff;

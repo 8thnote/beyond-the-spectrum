@@ -25,3 +25,19 @@ $o-name: '.o-Btn';
     background-color: darken(saturate($accent1-c, 5%), 3%);
   }
 }
+
+.o-List-bare {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.o-Form-btn-wrap {
+  padding: 2em 0.5rem;
+  width: 100%;
+}
+
+.o-Form-btn {
+  transform: scale(1.4);
+  transform-origin: 0 0;
+}

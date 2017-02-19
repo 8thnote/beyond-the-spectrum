@@ -12,6 +12,8 @@
     "axios": "^0.15.3",
     "flexboxgrid-sass": "^8.0.5",
     "font-awesome": "^4.7.0",
+    "formsy-material-ui": "^0.5.5",
+    "formsy-react": "^0.19.2",
     "immutability-helper": "^2.1.1",
     "material-ui": "^0.16.6",
     "normalize-scss": "^6.0.0",
