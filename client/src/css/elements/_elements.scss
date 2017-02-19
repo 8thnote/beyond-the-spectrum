@@ -13,4 +13,8 @@ a {
   text-decoration: none;
   transform: scale(1);
   -webkit-backface-visibility: hidden;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }

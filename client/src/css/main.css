@@ -2411,6 +2411,8 @@ a {
   text-decoration: none;
   transform: scale(1);
   -webkit-backface-visibility: hidden; }
+  a:hover {
+    text-decoration: underline; }
 
 .o-Btn {
   background-color: #cf2a64;
@@ -2500,16 +2502,15 @@ a {
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   color: #657675;
   display: block;
-  margin-bottom: 0.5em;
-  text-decoration: none;
-  transition: transform 0.4s; }
+  margin-bottom: 0.5em; }
   .c-Resource a {
     background-color: #f4eee2;
     border-radius: 3px;
     display: block;
     padding: 0.5em 1rem; }
     .c-Resource a:hover {
-      background-color: #fbf9f4; }
+      background-color: #fbf9f4;
+      text-decoration: none; }
     .c-Resource a.is-Active {
       background-color: white; }
 
