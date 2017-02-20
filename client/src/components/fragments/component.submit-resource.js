@@ -4,6 +4,7 @@ import { FormsySelect, FormsyText } from 'formsy-material-ui/lib';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import axios from 'axios';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class SubmitResource extends React.Component {
   constructor () {
@@ -13,9 +14,12 @@ class SubmitResource extends React.Component {
     this.disableButton = this.disableButton.bind(this);
     this.submitForm = this.submitForm.bind(this);
     this.notifyFormError = this.notifyFormError.bind(this);
+    this.submitAnother = this.submitAnother.bind(this);
 
     this.state = {
       canSubmit: false,
+      sending: false,
+      sent: false,
       category: '',
       description: '',
       purchase_link: '',
@@ -25,144 +29,173 @@ class SubmitResource extends React.Component {
     };
   }
 
+  render() {
+    function renderSubmitForm () {
+      if (!this.state.sent && !this.state.sending) {
+        return (
+          <div key="'form'">
+            <h3 className="o-Page__title">
+              Submit a Resource
+            </h3>
+
+            <p>* required</p>
+
+            <Formsy.Form
+              onValid={this.enableButton}
+              onInvalid={this.disableButton}
+              onValidSubmit={this.submitForm}
+              onInvalidSubmit={this.notifyFormError}
+            >
+              <div className="row">
+                <div className="col-md-6">
+                  <FormsySelect
+                    name="category"
+                    required
+                    floatingLabelText="Category*"
+                    fullWidth={true}
+                  >
+                    <MenuItem value={'book'} primaryText="Book" />
+                    <MenuItem value={'magazine'} primaryText="Magazine" />
+                    <MenuItem value={'website'} primaryText="Website" />
+                    <MenuItem value={'other'} primaryText="Other" />
+                  </FormsySelect>
+                </div>
+                <div className="col-md-6">
+                  <FormsyText
+                    name="title"
+                    required
+                    hintText="E.g. Autism Speaks"
+                    floatingLabelText="Title*"
+                    fullWidth={true}
+                  />
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-12">
+                  <FormsyText
+                    name="description"
+                    required
+                    hintText="Please add some information about the resource."
+                    floatingLabelText="Description*"
+                    multiLine={true}
+                    rows={5}
+                    fullWidth={true}
+                  />
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-12">
+                  <FormsyText
+                    name="website_link"
+                    required
+                    hintText="E.g. http://autismspeaks.org/"
+                    floatingLabelText="Website Link*"
+                    fullWidth={true}
+                  />
+                  <p>Please copy and paste the full url including http:// or https://.</p>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-12">
+                  <FormsyText
+                    name="purchase_link"
+                    hintText="A direct link to the purchase page if applicable"
+                    floatingLabelText="Purchase Link"
+                    fullWidth={true}
+                  />
+                </div>
+              </div>
+              <div className="row">
+                <div className="o-Form-btn-wrap">
+                  <RaisedButton
+                    type="submit"
+                    label="Submit"
+                    className="o-Form-btn"
+                    disabled={!this.state.canSubmit}
+                    primary={true}
+                  />
+                </div>
+              </div>
+            </Formsy.Form>
+          </div>
+        );
+      } else if (this.state.sending) {
+        return (
+          <div key="'sending'" style={{position: 'absolute', top: 0, left: 0}}>
+            <h3 className="o-Page__title">Sending...</h3>
+          </div>
+        )
+      } else {
+        return (
+          <div key="'thankyou'">
+            <h3 className="o-Page__title">
+              Thank You!
+            </h3>
+            <p>Thank you for submitting a resource. We will review it and add it to our website if it meets our submission criteria.</p>
+            <div className="o-Form-btn-wrap">
+              <RaisedButton
+                label="Submit Another Resource"
+                onClick={this.submitAnother}
+              />
+            </div>
+          </div>
+        )
+      }
+    }
+    return (
+      <div className="o-Page c-Submit-resource">
+        <div style={{position: 'relative'}}>
+          <ReactCSSTransitionGroup
+            transitionName="example"
+            transitionEnterTimeout={800}
+            transitionLeaveTimeout={500}
+          >
+              {renderSubmitForm.call(this)}
+          </ReactCSSTransitionGroup>
+        </div>
+      </div>
+    )
+  }// end render
+
   enableButton () {
     this.setState({
-      canSubmit: true,
+      canSubmit: true
     });
   }
 
   disableButton () {
     this.setState({
-      canSubmit: false,
+      canSubmit: false
     });
   }
 
   submitForm (data) {
-    console.log(data);
-    axios.post('/api/resource', data)
+    const self = this;
+
+    self.setState({
+      sending: true
+    });
+
+    setTimeout(function () {
+      axios.post('/api/resource', data)
       .then(res => {
         console.log(res);
+        self.setState({
+          sent: true,
+          sending: false
+        });
       });
+    }, 2000);
   }
 
   notifyFormError (data) {
     console.error('Form error:', data);
   }
 
-  render() {
-    return (
-        <div className="c-Details">
-          <h3 className="c-Details__title">
-            Submit a Resource
-          </h3>
-
-          <p>* required</p>
-
-          <Formsy.Form
-            onValid={this.enableButton}
-            onInvalid={this.disableButton}
-            onValidSubmit={this.submitForm}
-            onInvalidSubmit={this.notifyFormError}
-          >
-            <div className="row">
-              <div className="col-md-6">
-                <FormsySelect
-                  name="category"
-                  required
-                  floatingLabelText="Category*"
-                  fullWidth={true}
-                >
-                  <MenuItem value={'book'} primaryText="Book" />
-                  <MenuItem value={'magazine'} primaryText="Magazine" />
-                  <MenuItem value={'website'} primaryText="Website" />
-                  <MenuItem value={'other'} primaryText="Other" />
-                </FormsySelect>
-              </div>
-              <div className="col-md-6">
-                <FormsyText
-                  name="title"
-                  required
-                  hintText="E.g. Autism Speaks"
-                  floatingLabelText="Title*"
-                  fullWidth={true}
-                />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-12">
-                <FormsyText
-                  name="description"
-                  required
-                  hintText="Please add some info about the resource."
-                  floatingLabelText="Description*"
-                  multiLine={true}
-                  rows={5}
-                  fullWidth={true}
-                />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-md-6">
-                <FormsyText
-                  name="website_link"
-                  required
-                  hintText="E.g. http://autismspeaks.org/"
-                  floatingLabelText="Website Link*"
-                  fullWidth={true}
-                />
-              </div>
-              <div className="col-md-6">
-                <FormsyText
-                  name="purchase_link"
-                  hintText="A direct link to the purchase page if applicable"
-                  floatingLabelText="Purchase Link"
-                  fullWidth={true}
-                />
-              </div>
-            </div>
-            <div className="row">
-              <div className="o-Form-btn-wrap">
-                <RaisedButton
-                  type="submit"
-                  label="Submit"
-                  className="o-Form-btn"
-                  disabled={!this.state.canSubmit}
-                  primary={true}
-                />
-              </div>
-            </div>
-          </Formsy.Form>
-
-          {/*<form>
-            <div className="row">
-              <div className="col-md-6">
-                <SelectField
-                  floatingLabelText="Category"
-                  value={this.state.category}
-                  onChange={this.handleChange}
-                >
-                  <MenuItem value={1} primaryText="Book" />
-                  <MenuItem value={2} primaryText="Magazine" />
-                  <MenuItem value={3} primaryText="Website" />
-                </SelectField>
-              </div>
-              <div className="col-md-6">
-                <TextField
-                  hintText="E.g. Autism Speaks"
-                  floatingLabelText="Title"
-                  fullWidth={true}
-                />
-              </div>
-            </div>
-
-            <TextField
-              hintText="E.g. Autism Speaks is a website..."
-              floatingLabelText="Description"
-              fullWidth={true}
-            />
-          </form>*/}
-        </div>
-    );
+  submitAnother () {
+    this.setState({
+      sent: false
+    });
   }
 }
 

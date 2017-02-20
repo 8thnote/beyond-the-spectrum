@@ -8,7 +8,7 @@ class ResourceDetails extends React.Component {
 
     const resource = (() => {
       return this.props.resources.find((resource) => {
-        return resource._id === this.props.match.params.resourceId;
+        return resource._id === this.props.params.resourceId;
       });
     })();
 
@@ -28,14 +28,22 @@ class ResourceDetails extends React.Component {
               </i>
             </span>
           )
+        case 'magazine':
+          return (
+            <span className="c-Details__category c-Details__category--website">
+              <i>
+                MAG
+              </i>
+            </span>
+          )
         default:
           return null
       }
     }
 
     return (
-        <div className="c-Details">
-          <h3 className="c-Details__title">
+        <div className="o-Page c-Details">
+          <h3 className="o-Page__title">
             { resource.title }
             { renderCatIcon(resource.category) }
           </h3>

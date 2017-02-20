@@ -1,20 +1,5 @@
 $c-name: '.c-Details';
 
-#{$c-name} {
-  background-color: $light;
-  border-top-left-radius: $global-border-radius;
-  border-bottom-left-radius: $global-border-radius;
-  font-size: 1rem;
-  padding: 3em 2rem;
-  position: relative;
-}
-
-#{$c-name}__title {
-  color: $accent1-c;
-  font-family: $second-font-family;
-  font-size: 2.5em;
-}
-
 #{$c-name}__category {
   background-color: $text-c;
   border-radius: 50%;

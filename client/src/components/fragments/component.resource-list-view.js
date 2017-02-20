@@ -15,6 +15,10 @@ class ResourceListView extends React.Component {
           return <i className="c-Resource__category c-Resource__category--website">
             www.
           </i>
+        case 'magazine':
+          return <i className="c-Resource__category c-Resource__category--website">
+            MAG
+          </i>
         default:
           return null
       }

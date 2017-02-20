@@ -9,6 +9,10 @@ var resourceSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  dateSubmitted: {
+    type: Date,
+    default: Date.now()
+  },
   description: {
     type: String,
     required: true

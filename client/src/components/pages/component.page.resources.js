@@ -4,6 +4,7 @@ import {
 } from 'react-router-dom';
 import update from 'immutability-helper';
 import axios from 'axios';
+import { TransitionMotion, spring } from 'react-motion';
 
 import ResourceListView from '../fragments/component.resource-list-view';
 import ResourceDetails from '../fragments/component.resource-details';
@@ -22,6 +23,7 @@ class ResourcesPage extends React.Component {
       filters: {
         resources: {
           book: false,
+          magazine: false,
           website: false
         },
         resourcesArray: []
@@ -71,6 +73,7 @@ class ResourcesPage extends React.Component {
       return resources;
     }
 
+    const willLeave = () => ({ zIndex: 1, opacity: spring(0) });
 
     return (
       <div className="row c-Resource-page">
@@ -78,6 +81,7 @@ class ResourcesPage extends React.Component {
           <div className="c-Resource-page__filters">
             <p>Filter Resources:</p>
             <label><input type="checkbox" checked={this.state.filters.resources.book} onChange={this.handleChangeFilter('book')}/> Books</label><br/>
+            <label><input type="checkbox" checked={this.state.filters.resources.magazine} onChange={this.handleChangeFilter('magazine')}/> Magazines</label><br/>
             <label><input type="checkbox" checked={this.state.filters.resources.website} onChange={this.handleChangeFilter('website')}/> Websites</label>
           </div>
         </div>
@@ -90,11 +94,31 @@ class ResourcesPage extends React.Component {
           <div className="c-Resource-page__resource-details">
             <Route path={`${this.props.match.url}/submit-resource/`} exact component={SubmitResource} />
             <Route path={`${this.props.match.url}/details/:resourceId`}
-              render={
-                matchProps => {
+              children={
+                ({ location, match }) => {
                   if (resources.length > 0) {
                     return (
-                        <ResourceDetails {...matchProps} resources={resources} />
+                      <TransitionMotion
+                        willLeave={willLeave}
+                        styles={match ? [ {
+                          key: location.pathname,
+                          style: { opacity: 1 },
+                          data: match
+                        } ] : []}
+                      >
+                        {interpolatedStyles => (
+                          <div>
+                            {interpolatedStyles.map(config => (
+                              <div
+                                key={config.key}
+                                style={{ ...config.style, position: 'absolute', top: 0, right: 0, bottom: 0, left: '1rem' }}
+                              >
+                                <ResourceDetails {...config.data} match={match} resources={resources} />
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </TransitionMotion>
                     )
                   } else {
                     return null;

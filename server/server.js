@@ -2,14 +2,20 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var mongoSanitize = require('express-mongo-sanitize');
 
 Resource = require('./models/resource');
 
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+
+// Sanitize data
+app.use(mongoSanitize({
+  replaceWith: '_'
+}));
 
 mongoose.connect('mongodb://localhost/beyond-the-spectrum');
 var db = mongoose.connection;
-console.log(db);
 
 app.get('/', function (req, res) {
   res.send('Hello World. Yay!!!');

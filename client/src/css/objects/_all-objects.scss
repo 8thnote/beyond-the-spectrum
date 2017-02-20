@@ -41,3 +41,36 @@ $o-name: '.o-Btn';
   transform: scale(1.4);
   transform-origin: 0 0;
 }
+
+.o-Page {
+  background-color: $light;
+  border-top-left-radius: $global-border-radius;
+  border-bottom-left-radius: $global-border-radius;
+  font-size: 1rem;
+  min-height: 14rem;
+  padding: 3em 2rem;
+}
+
+.o-Page__title {
+  color: $accent1-c;
+  font-family: $second-font-family;
+  font-size: 2.5em;
+}
+
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 800ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 500ms ease-in;
+}
