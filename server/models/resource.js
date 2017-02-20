@@ -38,7 +38,7 @@ var resourceSchema = mongoose.Schema({
 var Resource = module.exports = mongoose.model('Resource', resourceSchema);
 
 module.exports.getResources = function (callback, limit) {
-  Resource.find(callback).limit(limit);
+  Resource.find({approved: true}, '-approved', callback).limit(limit);
 }
 
 module.exports.getResourceById = function (_id, callback) {

@@ -38,6 +38,7 @@ class SubmitResource extends React.Component {
   }
 
   submitForm (data) {
+    console.log(data);
     axios.post('/api/resource', data)
       .then(res => {
         console.log(res);
