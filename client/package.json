@@ -13,7 +13,7 @@
     "flexboxgrid-sass": "^8.0.5",
     "font-awesome": "^4.7.0",
     "formsy-material-ui": "^0.5.5",
-    "formsy-react": "^0.19.2",
+    "formsy-react": "^0.18.0",
     "immutability-helper": "^2.1.1",
     "material-ui": "^0.16.6",
     "normalize-scss": "^6.0.0",
@@ -22,6 +22,7 @@
     "react-addons-css-transition-group": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-motion": "^0.4.7",
+    "react-recaptcha": "^2.2.6",
     "react-router": "^4.0.0-beta.6",
     "react-router-dom": "^4.0.0-beta.6",
     "react-tap-event-plugin": "^2.0.1"

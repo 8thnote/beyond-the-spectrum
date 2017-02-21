@@ -5,6 +5,7 @@ import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import axios from 'axios';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import MyFormsyRecaptcha from './component.formsy-recaptcha';
 
 class SubmitResource extends React.Component {
   constructor () {
@@ -25,7 +26,8 @@ class SubmitResource extends React.Component {
       purchase_link: '',
       title: '',
       url: '',
-      website_link: ''
+      website_link: '',
+      recaptcha: ''
     };
   }
 
@@ -88,7 +90,7 @@ class SubmitResource extends React.Component {
                   <FormsyText
                     name="website_link"
                     required
-                    hintText="E.g. http://autismspeaks.org/"
+                    hintText="E.g. http://www.autismspeaks.org/"
                     floatingLabelText="Website Link*"
                     fullWidth={true}
                   />
@@ -107,6 +109,11 @@ class SubmitResource extends React.Component {
               </div>
               <div className="row">
                 <div className="o-Form-btn-wrap">
+                  <MyFormsyRecaptcha
+                    name="recaptcha"
+                    required
+                    onChange={console.log('changing')}
+                  /><br />
                   <RaisedButton
                     type="submit"
                     label="Submit"
