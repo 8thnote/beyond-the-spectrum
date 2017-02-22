@@ -26,8 +26,8 @@ class MyFormsyRecaptcha extends React.Component {
     var response = window.grecaptcha.getResponse();
 
     if (response.length !== 0) {
-      this.props.setValue('set');
-      console.log('set value');
+      //this.props.setRecaptcha();
+      this.props.setValue(response);
     }
   }
 };

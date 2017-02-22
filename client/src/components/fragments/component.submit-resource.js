@@ -20,14 +20,7 @@ class SubmitResource extends React.Component {
     this.state = {
       canSubmit: false,
       sending: false,
-      sent: false,
-      category: '',
-      description: '',
-      purchase_link: '',
-      title: '',
-      url: '',
-      website_link: '',
-      recaptcha: ''
+      sent: false
     };
   }
 
@@ -110,9 +103,8 @@ class SubmitResource extends React.Component {
               <div className="row">
                 <div className="o-Form-btn-wrap">
                   <MyFormsyRecaptcha
-                    name="recaptcha"
+                    name="g-recaptcha-response"
                     required
-                    onChange={console.log('changing')}
                   /><br />
                   <RaisedButton
                     type="submit"
@@ -186,11 +178,18 @@ class SubmitResource extends React.Component {
     setTimeout(function () {
       axios.post('/api/resource', data)
       .then(res => {
-        console.log(res);
-        self.setState({
-          sent: true,
-          sending: false
-        });
+        // Was captcha valid?
+        if (typeof res.data.formSubmit !== 'undefined' && !res.data.formSubmit) {
+          self.setState({
+            sending: false
+          });
+          // TODO: reset captcha and show a message about resubmitting the captcha
+        } else {
+          self.setState({
+            sent: true,
+            sending: false
+          });
+        }
       });
     }, 2000);
   }
