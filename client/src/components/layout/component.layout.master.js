@@ -40,14 +40,6 @@ const MasterLayout = ({ match }) => {
                       Submit a Resource
                     </NavLink>
                   </li>
-                  {/*
-                  <li className="c-Header__item">
-                    <a href="#" className="c-Header__link">Submit a Resource</a>
-                  </li>
-                  <li className="c-Header__item">
-                    <a href="#" className="c-Header__link">About</a>
-                  </li>
-                  */}
                 </ul>
               </nav>
             </div>

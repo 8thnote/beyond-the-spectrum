@@ -20,7 +20,13 @@ class SubmitResource extends React.Component {
     this.state = {
       canSubmit: false,
       sending: false,
-      sent: false
+      sent: false,
+      captchaErrorShown: false,
+      category: '',
+      title: '',
+      description: '',
+      website_link: '',
+      purchase_link: ''
     };
   }
 
@@ -32,6 +38,12 @@ class SubmitResource extends React.Component {
             <h3 className="o-Page__title">
               Submit a Resource
             </h3>
+
+            {this.state.captchaErrorShown &&
+              <div className="c-Ss-err">
+                <p className="c-Ss-err__p">There was a problem with the captcha. Please try resubmitting.</p>
+              </div>
+            }
 
             <p>* required</p>
 
@@ -45,6 +57,7 @@ class SubmitResource extends React.Component {
                 <div className="col-md-6">
                   <FormsySelect
                     name="category"
+                    value={this.state.category}
                     required
                     floatingLabelText="Category*"
                     fullWidth={true}
@@ -58,6 +71,7 @@ class SubmitResource extends React.Component {
                 <div className="col-md-6">
                   <FormsyText
                     name="title"
+                    value={this.state.title}
                     required
                     hintText="E.g. Autism Speaks"
                     floatingLabelText="Title*"
@@ -69,6 +83,7 @@ class SubmitResource extends React.Component {
                 <div className="col-md-12">
                   <FormsyText
                     name="description"
+                    value={this.state.description}
                     required
                     hintText="Please add some information about the resource."
                     floatingLabelText="Description*"
@@ -82,6 +97,7 @@ class SubmitResource extends React.Component {
                 <div className="col-md-12">
                   <FormsyText
                     name="website_link"
+                    value={this.state.website_link}
                     required
                     hintText="E.g. http://www.autismspeaks.org/"
                     floatingLabelText="Website Link*"
@@ -94,6 +110,7 @@ class SubmitResource extends React.Component {
                 <div className="col-md-12">
                   <FormsyText
                     name="purchase_link"
+                    value={this.state.purchase_link}
                     hintText="A direct link to the purchase page if applicable"
                     floatingLabelText="Purchase Link"
                     fullWidth={true}
@@ -172,26 +189,38 @@ class SubmitResource extends React.Component {
     const self = this;
 
     self.setState({
-      sending: true
+      sending: true,
+      category: data.category,
+      title: data.title,
+      description: data.description,
+      website_link: data.website_link,
+      purchase_link: data.purchase_link
     });
 
+    // Using setTimeout to test the transition
     setTimeout(function () {
       axios.post('/api/resource', data)
       .then(res => {
         // Was captcha valid?
         if (typeof res.data.formSubmit !== 'undefined' && !res.data.formSubmit) {
           self.setState({
-            sending: false
+            sending: false,
+            captchaErrorShown: true
           });
-          // TODO: reset captcha and show a message about resubmitting the captcha
         } else {
           self.setState({
+            captchaErrorShown: false,
             sent: true,
-            sending: false
+            sending: false,
+            category: '',
+            title: '',
+            description: '',
+            website_link: '',
+            purchase_link: ''
           });
         }
       });
-    }, 2000);
+    }, 1000);
   }
 
   notifyFormError (data) {

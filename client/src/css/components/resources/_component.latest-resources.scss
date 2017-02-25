@@ -1,0 +1,29 @@
+$c-name: '.c-Latest';
+
+#{$c-name}__heading {
+  font-size: 1rem;
+}
+
+#{$c-name}__heading {
+  font-size: 1.2em;
+  margin-bottom: 1em;
+}
+
+#{$c-name}__item {
+  margin-bottom: 1em;
+}
+
+#{$c-name}__item-title {
+  margin-bottom: 0.1em;
+}
+
+  #{$c-name}__item-link {
+    color: $accent1-c;
+  }
+
+#{$c-name}__item-cat {
+  font-size: 0.9em;
+  font-style: italic;
+  line-height: 1;
+  margin: 0;
+}

@@ -19,7 +19,7 @@ class ResourcesPage extends React.Component {
     this.handleChangeFilter = this.handleChangeFilter.bind(this);
 
     this.state = {
-      resources: {},
+      resources: [],
       filters: {
         resources: {
           book: false,
@@ -45,11 +45,6 @@ class ResourcesPage extends React.Component {
   render() {
     var filtersArray = Object.keys(this.state.filters.resources);
     filtersArray = filtersArray.filter(filter => this.state.filters.resources[filter] === true);
-
-    var resources = [];
-    Object.keys(this.state.resources).forEach((key, index) => {
-      resources.push(this.state.resources[key]);
-    });
 
     function renderResourceList (resources, match) {
       if (filtersArray.length > 0) {
@@ -87,7 +82,7 @@ class ResourcesPage extends React.Component {
         </div>
         <div className="col-xs-12 col-md-4">
           <div className="c-Resource-page__resource-list">
-            { renderResourceList(resources, this.props.match) }
+            { renderResourceList(this.state.resources, this.props.match) }
           </div>
         </div>
         <div className="col-xs-12 col-md-6">
@@ -96,7 +91,7 @@ class ResourcesPage extends React.Component {
             <Route path={`${this.props.match.url}/details/:resourceId`}
               children={
                 ({ location, match }) => {
-                  if (resources.length > 0) {
+                  if (this.state.resources.length > 0) {
                     return (
                       <TransitionMotion
                         willLeave={willLeave}
@@ -113,7 +108,7 @@ class ResourcesPage extends React.Component {
                                 key={config.key}
                                 style={{ ...config.style, position: 'absolute', top: 0, right: 0, bottom: 0, left: '1rem' }}
                               >
-                                <ResourceDetails {...config.data} match={match} resources={resources} />
+                                <ResourceDetails {...config.data} match={match} resources={this.state.resources} />
                               </div>
                             ))}
                           </div>

@@ -3,3 +3,15 @@ $c-name: '.c-Submit-resource';
 #{$c-name} {
   margin-top: -8rem;
 }
+
+$c-name: '.c-Ss-err';
+
+#{$c-name} {
+  background: desaturate(lighten($accent1-c, 40), 10);
+  margin-bottom: 1em;
+  padding: 1em;
+}
+
+#{$c-name}__p:last-child {
+  margin-bottom: 0;
+}

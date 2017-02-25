@@ -6,29 +6,35 @@ class MyFormsyRecaptcha extends React.Component {
   constructor () {
     super();
 
-    this.handleRecaptcha = this.handleRecaptcha.bind(this);
+    this.verifyCallback = this.verifyCallback.bind(this);
+    this.resetCaptcha = this.resetCaptcha.bind(this);
   }
 
   render() {
     return (
       <div>
         <Recaptcha
+          ref={e => this.recaptchaInstance = e}
           sitekey="6LflXBYUAAAAAOn-KJAUEiY0Bw995sNZWDwR0NZN"
-          verifyCallback={this.handleRecaptcha}
+          verifyCallback={this.verifyCallback}
           render="explicit"
-          onloadCallback={console.log.bind(this, "recaptcha loaded")}
+          onloadCallback={this.resetCaptcha}
+          expiredCallback={this.resetCaptcha}
         />
       </div>
     );
   }
 
-  handleRecaptcha (e) {
-    var response = window.grecaptcha.getResponse();
-
-    if (response.length !== 0) {
-      //this.props.setRecaptcha();
-      this.props.setValue(response);
+  verifyCallback (val) {
+    if (val) {
+      this.props.setValue(val);
     }
+  }
+
+  resetCaptcha () {
+    console.log('reset');
+    window.grecaptcha.reset();
+    //this.recaptchaInstance.reset();
   }
 };
 

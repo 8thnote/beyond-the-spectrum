@@ -14,6 +14,7 @@ $o-name: '.o-Btn';
     background-color: lighten($accent1-c, 7%);
     box-shadow: 0 0 1px 1px transparentize($dark, 0.7);
     color: $light;
+    text-decoration: none;
     text-shadow: 1px 1px 1px transparentize($dark, 0.6);
   }
 
@@ -49,6 +50,11 @@ $o-name: '.o-Btn';
   font-size: 1rem;
   min-height: 14rem;
   padding: 3em 2rem;
+
+  &--neg-mt {
+    margin-top: -2rem;
+    position: relative;
+  }
 }
 
 .o-Page__title {
