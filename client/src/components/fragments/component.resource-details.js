@@ -42,42 +42,42 @@ class ResourceDetails extends React.Component {
     }
 
     return (
-        <div className="o-Page c-Details">
-          <h3 className="o-Page__title">
-            { resource.title }
-            { renderCatIcon(resource.category) }
-          </h3>
+      <div className="c-Details__content">
+        <h3 className="o-Page__title">
+          { resource.title }
+          { renderCatIcon(resource.category) }
+        </h3>
 
-          <div className="c-Details__description">
-            <p>
-              { resource.description }
-            </p>
-          </div>
+        <div className="c-Details__description">
+          <p>
+            { resource.description }
+          </p>
+        </div>
 
-          { resource.website_link ?
-              <p className="c-Details__website">
-                <strong>Website:</strong><br/>
-                <a href={ resource.website_link }
-                  target="_blank"
-                >
-                  { resource.website_link }
-                </a>
-              </p>
-
-              : ''
-          }
-
-          { resource.purchase_link ?
-              <a href={ resource.purchase_link }
-                className="o-Btn c-Details__purchase"
+        { resource.website_link ?
+            <p className="c-Details__website">
+              <strong>Website:</strong><br/>
+              <a href={ resource.website_link }
                 target="_blank"
               >
-                Purchase Link
+                { resource.website_link }
               </a>
+            </p>
 
-              : ''
-          }
-        </div>
+            : ''
+        }
+
+        { resource.purchase_link ?
+            <a href={ resource.purchase_link }
+              className="o-Btn c-Details__purchase"
+              target="_blank"
+            >
+              Purchase Link
+            </a>
+
+            : ''
+        }
+      </div>
     );
   }
 }

@@ -1,5 +1,21 @@
 $c-name: '.c-Details';
 
+#{$c-name} {
+  box-sizing: content-box;
+  min-height: 30rem;
+  overflow: hidden;
+  position: relative;
+}
+
+#{$c-name}__content-wrap {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+}
+
+#{$c-name}__content {
+  padding: 3em 2rem;
+}
+
 #{$c-name}__category {
   background-color: $text-c;
   border-radius: 50%;

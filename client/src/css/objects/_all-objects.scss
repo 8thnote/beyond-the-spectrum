@@ -63,6 +63,17 @@ $o-name: '.o-Btn';
   font-size: 2.5em;
 }
 
+.fade-slide-appear {
+  opacity: 0.01;
+  transform: translateX(10rem);
+}
+
+.fade-slide-appear.fade-slide-appear-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 500ms ease-out;
+}
+
 //Fade React Animation
 .fade-enter {
   opacity: 0.01;

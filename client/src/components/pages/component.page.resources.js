@@ -4,12 +4,11 @@ import {
 } from 'react-router-dom';
 import update from 'immutability-helper';
 import axios from 'axios';
-import { TransitionMotion, spring } from 'react-motion';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Checkbox from 'material-ui/Checkbox';
 
 import ResourceListView from '../fragments/component.resource-list-view';
-import ResourceDetails from '../fragments/component.resource-details';
+import ResourceDetailsWrap from '../fragments/component.resource-details-wrap';
 import SubmitResource from '../fragments/component.submit-resource';
 
 
@@ -70,8 +69,6 @@ class ResourcesPage extends React.Component {
       return resources;
     }
 
-    const willLeave = () => ({ zIndex: 1, opacity: spring(0) });
-
     return (
       <div className="row c-Resource-page">
         <div className="col-xs-12 col-md-2">
@@ -108,32 +105,11 @@ class ResourcesPage extends React.Component {
         <div className="col-xs-12 col-md-6">
           <div className="c-Resource-page__resource-details">
             <Route path={`${this.props.match.url}/submit-resource/`} exact component={SubmitResource} />
-            <Route path={`${this.props.match.url}/details/:resourceId`}
-              children={
-                ({ location, match }) => {
+            <Route path={`${this.props.match.url}/details/`}
+              render={matchProps => {
                   if (this.state.resources.length > 0) {
                     return (
-                      <TransitionMotion
-                        willLeave={willLeave}
-                        styles={match ? [ {
-                          key: location.pathname,
-                          style: { opacity: 1 },
-                          data: match
-                        } ] : []}
-                      >
-                        {interpolatedStyles => (
-                          <div>
-                            {interpolatedStyles.map(config => (
-                              <div
-                                key={config.key}
-                                style={{ ...config.style, position: 'absolute', top: 0, right: 0, bottom: 0, left: '1rem' }}
-                              >
-                                <ResourceDetails {...config.data} match={match} resources={this.state.resources} />
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                      </TransitionMotion>
+                      <ResourceDetailsWrap {... matchProps} resources={this.state.resources} />
                     )
                   } else {
                     return null;

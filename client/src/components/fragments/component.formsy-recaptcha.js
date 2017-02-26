@@ -32,9 +32,7 @@ class MyFormsyRecaptcha extends React.Component {
   }
 
   resetCaptcha () {
-    console.log('reset');
     window.grecaptcha.reset();
-    //this.recaptchaInstance.reset();
   }
 };
 
