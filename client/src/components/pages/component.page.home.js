@@ -7,7 +7,7 @@ class ResourcesPage extends React.Component {
   render() {
     return (
       <div className="row">
-        <div className="col-xs-12 col-md-offset-2 col-md-8">
+        <div className="col-xs-12 col-md-offset-1 col-md-10">
           <div className="o-Page o-Page--neg-mt">
             <div className="row">
               <div className="col-md-8">

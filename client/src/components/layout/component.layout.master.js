@@ -42,6 +42,28 @@ const MasterLayout = ({ match }) => {
                   </li>
                 </ul>
               </nav>
+              <nav className="col-md-2 c-Header__signin">
+                <ul className="o-List-bare c-Header__list">
+                  <li className="c-Header__item">
+                    <NavLink
+                      to="/resources/"
+                      className="c-Header__link"
+                      activeClassName="is-Active"
+                    >
+                      Sign In
+                    </NavLink>
+                  </li>
+                  <li className="c-Header__item">
+                    <NavLink
+                      to="/resources/submit-resource/"
+                      className="c-Header__link"
+                      activeClassName="is-Active"
+                    >
+                      Join
+                    </NavLink>
+                  </li>
+                </ul>
+              </nav>
             </div>
           </div>{/* /.container-fluid */}
         </div>{/* /.c-Header__top */}
