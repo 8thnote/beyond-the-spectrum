@@ -162,7 +162,7 @@ class SubmitResource extends React.Component {
       <div className="o-Page c-Submit-resource">
         <div style={{position: 'relative'}}>
           <ReactCSSTransitionGroup
-            transitionName="example"
+            transitionName="slow-fade"
             transitionEnterTimeout={800}
             transitionLeaveTimeout={500}
           >

@@ -13,7 +13,8 @@ injectTapEventPlugin();
 const muiTheme = getMuiTheme({
   fontFamily: "'Open Sans', sans-serif",
   palette: {
-    primary1Color: "#289a72"
+    primary1Color: "#289a72",
+    textColor: "#657675"
   }
 });
 

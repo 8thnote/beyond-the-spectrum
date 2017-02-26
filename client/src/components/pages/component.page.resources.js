@@ -5,6 +5,8 @@ import {
 import update from 'immutability-helper';
 import axios from 'axios';
 import { TransitionMotion, spring } from 'react-motion';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import Checkbox from 'material-ui/Checkbox';
 
 import ResourceListView from '../fragments/component.resource-list-view';
 import ResourceDetails from '../fragments/component.resource-details';
@@ -75,14 +77,32 @@ class ResourcesPage extends React.Component {
         <div className="col-xs-12 col-md-2">
           <div className="c-Resource-page__filters">
             <p>Filter Resources:</p>
-            <label><input type="checkbox" checked={this.state.filters.resources.book} onChange={this.handleChangeFilter('book')}/> Books</label><br/>
-            <label><input type="checkbox" checked={this.state.filters.resources.magazine} onChange={this.handleChangeFilter('magazine')}/> Magazines</label><br/>
-            <label><input type="checkbox" checked={this.state.filters.resources.website} onChange={this.handleChangeFilter('website')}/> Websites</label>
+            <Checkbox
+              label="Books"
+              checked={this.state.filters.resources.book}
+              onCheck={this.handleChangeFilter('book')}
+            />
+            <Checkbox
+              label="Magazine"
+              checked={this.state.filters.resources.magazine}
+              onCheck={this.handleChangeFilter('magazine')}
+            />
+            <Checkbox
+              label="Website"
+              checked={this.state.filters.resources.website}
+              onCheck={this.handleChangeFilter('website')}
+            />
           </div>
         </div>
         <div className="col-xs-12 col-md-4">
           <div className="c-Resource-page__resource-list">
-            { renderResourceList(this.state.resources, this.props.match) }
+            <ReactCSSTransitionGroup
+              transitionName="fade"
+              transitionEnterTimeout={500}
+              transitionLeaveTimeout={300}
+            >
+              { renderResourceList(this.state.resources, this.props.match) }
+            </ReactCSSTransitionGroup>
           </div>
         </div>
         <div className="col-xs-12 col-md-6">
