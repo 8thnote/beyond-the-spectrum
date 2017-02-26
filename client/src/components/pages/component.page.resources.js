@@ -1,6 +1,7 @@
 import React from 'react';
 import {
-  Route
+  Route,
+  Switch
 } from 'react-router-dom';
 import update from 'immutability-helper';
 import axios from 'axios';
@@ -104,19 +105,33 @@ class ResourcesPage extends React.Component {
         </div>
         <div className="col-xs-12 col-md-6">
           <div className="c-Resource-page__resource-details">
-            <Route path={`${this.props.match.url}/submit-resource/`} exact component={SubmitResource} />
-            <Route path={`${this.props.match.url}/details/`}
-              render={matchProps => {
-                  if (this.state.resources.length > 0) {
-                    return (
-                      <ResourceDetailsWrap {... matchProps} resources={this.state.resources} />
-                    )
-                  } else {
-                    return null;
+            <Switch>
+              <Route path={`${this.props.match.url}/submit-resource/`} exact component={SubmitResource} />
+              <Route path={`${this.props.match.url}/details/`}
+                render={matchProps => {
+                    if (this.state.resources.length > 0) {
+                      return (
+                        <ResourceDetailsWrap {... matchProps} resources={this.state.resources} />
+                      )
+                    } else {
+                      return null;
+                    }
                   }
                 }
-              }
-            />
+              />
+              <Route render={() => {
+                  return (
+                    <div className="c-Resource-page__lg-ad">
+                      <a href="https://disneyworld.disney.go.com/"
+                        target="_blank"
+                      >
+                        <img src="/img/demo-ad.png" alt="Demo Ad" />
+                      </a>
+                    </div>
+                  )
+                }
+              } />
+            </Switch>
           </div>
         </div>
       </div>
