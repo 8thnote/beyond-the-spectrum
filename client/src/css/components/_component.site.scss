@@ -4,10 +4,15 @@ $c-name: '.c-Site';
   padding-bottom: 4rem;
 }
 
+#{$c-name}__content {
+  position: relative;
+  z-index: 5;
+}
+
 #{$c-name}__bg {
   background: url('/img/nami.png') 0 0 repeat;
   content: '';
   opacity: 0.1;
-  position: absolute;
+  position: fixed;
   top: 0; right: 0; bottom: 0; left: 0;
 }

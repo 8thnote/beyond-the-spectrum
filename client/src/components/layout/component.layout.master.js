@@ -11,7 +11,7 @@ import ResourcesPage from '../pages/component.page.resources';
 const MasterLayout = ({ match }) => {
   return (
     <div>
-      <header className="c-Header">
+      <header className="c-Site__header c-Header">
         <div className="c-Header__top">
           <div className="container-fluid">
             <div className="row">
@@ -67,10 +67,12 @@ const MasterLayout = ({ match }) => {
             </div>
           </div>{/* /.container-fluid */}
         </div>{/* /.c-Header__top */}
-        <div className="c-Header__bg-img"></div>
+        <div className="c-Header__bg-color">
+          <div className="c-Header__bg-img"></div>
+        </div>
       </header>
 
-      <div className="container-fluid">
+      <div className="container-fluid c-Site__content">
         <Route path={`${match.url}`} exact component={HomePage} />
         <Route path={`${match.url}resources/`} render={matchProps => <ResourcesPage {...matchProps} />} />
       </div>

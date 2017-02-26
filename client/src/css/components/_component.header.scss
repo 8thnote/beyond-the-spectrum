@@ -1,14 +1,18 @@
 $c-name: '.c-Header';
 
 #{$c-name} {
-  background-color: $text-c;
-  border-bottom: 0.5em solid $light-gray;
   font-family: $second-font-family;
+  height: 13rem;
 }
 
 #{$c-name}__top {
   background-color: $dark-gray;
+  height: 3rem;
   padding: 0.5rem 0;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  z-index: 10;
 }
 
 #{$c-name}__logo {
@@ -44,10 +48,20 @@ $c-name: '.c-Header';
   text-decoration: none;
 }
 
+#{$c-name}__bg-color {
+  background-color: $text-c;
+  border-bottom: 0.5em solid $light-gray;
+  height: 10rem;
+  position: fixed;
+  top: 3rem; left: 0;
+  width: 100%;
+  z-index: 2;
+}
 
 #{$c-name}__bg-img {
   background: url('/img/sunrise.jpg') 50% 50% no-repeat;
   background-size: cover;
-  height: 10rem;
   opacity: 0.3;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
 }

@@ -5,7 +5,9 @@ $c-name: '.c-Resource-page';
   border-radius: $global-border-radius;
   margin-top: 1em;
   padding: 1em 1rem;
-  width: 90%;
+  position: fixed;
+  top: 13rem;
+  width: 14%;
 }
 
 #{$c-name}__resource-list {
@@ -20,5 +22,8 @@ $c-name: '.c-Resource-page';
 
 #{$c-name}__lg-ad {
   padding-top: 6rem;
+  position: fixed;
   text-align: center;
+  top: 13rem;
+  width: 48%;
 }

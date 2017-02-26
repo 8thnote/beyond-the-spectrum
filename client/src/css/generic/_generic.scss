@@ -12,7 +12,8 @@ body {
   color: $text-c;
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
-  overflow-X: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
   position: relative;
 }
 
