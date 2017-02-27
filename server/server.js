@@ -34,12 +34,14 @@ var recaptcha = new reCAPTCHA({
 
 // ROUTES
 app.get('/api/resource', function (req, res) {
+  var limit = parseInt(req.param('limit'));
+
   Resource.getResources(function (err, resources) {
     if(err) {
       throw err;
     }
     res.json(resources);
-  });
+  }, limit);
 });
 
 // app.get('/api/resource/:_id', function (req, res) {

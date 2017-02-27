@@ -15,7 +15,7 @@ class LatestResources extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/api/resource')
+    axios.get('/api/resource?limit=5')
       .then(res => {
         this.setState({
           resources: res.data

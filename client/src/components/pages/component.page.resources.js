@@ -38,8 +38,23 @@ class ResourcesPage extends React.Component {
   componentDidMount() {
     axios.get('/api/resource')
       .then(res => {
+        var resources = res.data
+          .sort(function (a, b) {
+            var ratingA = a.rating || 0;
+            var ratingB = b.rating || 0;
+
+            if (ratingA < ratingB) {
+              return -1;
+            }
+            if (ratingA > ratingB) {
+              return 1;
+            }
+            return 0;
+          })
+          .reverse();
+
         this.setState({
-          resources: res.data
+          resources: resources
         })
       });
   }
@@ -60,8 +75,7 @@ class ResourcesPage extends React.Component {
           });
       }
 
-      resources = resources
-        .map(resource => {
+      resources = resources.map(resource => {
           return (
             <ResourceListView match={match} data={resource} key={resource._id} />
           )
@@ -76,7 +90,7 @@ class ResourcesPage extends React.Component {
           <div className="c-Resource-page__filters">
             <p>Filter Resources:</p>
             <Checkbox
-              label="Books"
+              label="Book"
               checked={this.state.filters.resources.book}
               onCheck={this.handleChangeFilter('book')}
             />

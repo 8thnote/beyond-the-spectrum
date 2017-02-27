@@ -54,28 +54,28 @@ class ResourceDetails extends React.Component {
           </p>
         </div>
 
-        { resource.website_link ?
-            <p className="c-Details__website">
-              <strong>Website:</strong><br/>
-              <a href={ resource.website_link }
-                target="_blank"
-              >
-                { resource.website_link }
-              </a>
-            </p>
-
-            : ''
+        { resource.rating &&
+          <p>
+            <strong>Rating: </strong> {resource.rating} / 5
+          </p>
         }
 
-        { resource.purchase_link ?
+        <p className="c-Details__website">
+          <strong>Website: </strong>
+          <a href={ resource.website_link }
+            target="_blank"
+          >
+            { resource.website_link }
+          </a>
+        </p>
+
+        { resource.purchase_link &&
             <a href={ resource.purchase_link }
               className="o-Btn c-Details__purchase"
               target="_blank"
             >
               Purchase Link
             </a>
-
-            : ''
         }
       </div>
     );

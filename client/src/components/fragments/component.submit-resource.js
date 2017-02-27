@@ -73,6 +73,8 @@ class SubmitResource extends React.Component {
                     name="title"
                     value={this.state.title}
                     required
+                    validations="maxLength:30"
+                    validationError="Please shorten the title to 30 or less characters"
                     hintText="E.g. Autism Speaks"
                     floatingLabelText="Title*"
                     fullWidth={true}
