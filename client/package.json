@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
+    "classnames": "^2.2.5",
     "flexboxgrid-sass": "^8.0.5",
     "font-awesome": "^4.7.0",
     "formsy-material-ui": "^0.5.5",

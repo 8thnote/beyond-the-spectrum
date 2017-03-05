@@ -28,3 +28,28 @@ $second-font-family: 'Lato', sans-serif;
 
 // Misc
 $global-border-radius: 3px;
+
+
+// Layout (Flexbox Grid)
+// $grid-columns: 12 !default;
+// $gutter-width: 1rem !default;
+// $outer-margin: 2rem !default;
+
+// $breakpoints:
+//   sm 48em 46rem,
+//   md 62em 61rem,
+//   lg 75em 71rem !default;
+
+// $flexboxgrid-max-width: 1200px !default;
+
+// Breakpoints
+// @media only screen and (min-width: $size)
+$bp-sm: 48em;
+$bp-md: 62em;
+$bp-lg: 75em;
+
+$outer-margin: 1rem;
+
+@media only screen and (min-width: $bp-sm) {
+  $outer-margin: 2rem;
+}

@@ -2,7 +2,11 @@ $c-name: '.c-Header';
 
 #{$c-name} {
   font-family: $second-font-family;
-  height: 13rem;
+  height: 7rem;
+
+  @media only screen and (min-width: $bp-md) {
+    height: 13rem;
+  }
 }
 
 #{$c-name}__top {
@@ -10,26 +14,64 @@ $c-name: '.c-Header';
   background-color: $dark-gray;
   box-shadow: 0 2px 3px rgba(0,0,0,0.2);
   display: flex;
-  height: 3rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   position: fixed;
   top: 0; left: 0;
   width: 100%;
   z-index: 10;
+
+  @media only screen and (min-width: $bp-md) {
+    height: 3rem;
+  }
 }
 
 #{$c-name}__top-row {
   width: 100%;
+
+  @media only screen and (min-width: $bp-md) {
+    display: flex;
+  }
+}
+
+#{$c-name}__logo-wrap {
+  @media only screen and (min-width: $bp-md) {
+    display: block;
+    padding-right: 3%;
+    width: 25%;
+  }
+}
+
+#{$c-name}__logo-desk-wrap {
+  @media only screen and (min-width: $bp-md) {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+#{$c-name}__logo-desk-inner-wrap {
+  @media only screen and (min-width: $bp-md) {
+    display: block;
+  }
 }
 
 #{$c-name}__logo {
-  border-bottom: 2px solid $accent1-c;
-  font-size: 1.5vw;
-  margin: 0;
-  text-align: center;
+  display: inline-block;
+  font-size: 1.4rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 15rem;
+  text-align: left;
   vertical-align: middle;
-  width: 97%;
+
+  @media only screen and (min-width: $bp-md) {
+    border-bottom: 2px solid $accent1-c;
+    display: block;
+    font-size: 1.4vw;
+    max-width: 97%;
+    text-align: center;
+    width: 97%;
+  }
 
   a {
     color: $light;
@@ -37,18 +79,51 @@ $c-name: '.c-Header';
   }
 }
 
+#{$c-name}__ham {
+  text-align: right;
+
+  @media only screen and (min-width: $bp-md) {
+    display: none;
+  }
+}
+
 #{$c-name}__nav, #{$c-name}__signin {
   align-items: center;
-  display: flex;
+  display: none;
+
+  @media only screen and (min-width: $bp-md) {
+    display: flex;
+  }
+}
+
+#{$c-name}__nav.is-Shown {
+  display: block;
+  padding: 0;
+
+  @media only screen and (min-width: $bp-md) {
+    display: flex;
+  }
 }
 
 #{$c-name}__signin {
   justify-content: flex-end;
 }
 
+#{$c-name}__list {
+  margin-top: 0.5rem;
+  padding: 0;
+  width: 100%;
+}
+
 #{$c-name}__item {
-  display: inline-block;
-  margin-right: 1.5em;
+  background-color: $text-c;
+  padding: 0.5em 0;
+  text-align: center;
+
+  @media only screen and (min-width: $bp-md) {
+    display: inline-block;
+    margin-right: 1.5em;
+  }
 }
 
 #{$c-name}__link {
@@ -59,11 +134,16 @@ $c-name: '.c-Header';
 #{$c-name}__bg-color {
   background-color: $text-c;
   border-bottom: 0.5em solid $light-gray;
-  height: 10rem;
+  height: 7rem;
   position: fixed;
-  top: 3rem; left: 0;
+  top: 0; left: 0;
   width: 100%;
   z-index: 2;
+
+  @media only screen and (min-width: $bp-md) {
+    height: 10rem;
+    top: 3rem;
+  }
 }
 
 #{$c-name}__bg-img {

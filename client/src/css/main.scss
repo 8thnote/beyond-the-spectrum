@@ -1,13 +1,11 @@
 @import '../../node_modules/normalize-scss/sass/normalize';
 @include normalize();
 
-// Flexbox Grid Settings Would Go Here
+// Contains flexbox grid overrides
+@import './settings/variables';
 
 @import '../../node_modules/flexboxgrid-sass/flexboxgrid';
 
-
-
-// Custom styles
 @import './settings/variables';
 
 @import './generic/generic';
