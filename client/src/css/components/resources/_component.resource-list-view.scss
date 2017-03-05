@@ -5,8 +5,9 @@ $c-name: '.c-Resource';
   color: $text-c;
   display: block;
   margin-bottom: 0.5em;
+  position: relative;
 
-  a {
+  > a {
     background-color: $bg2-c;
     border-radius: $global-border-radius;
     display: block;
@@ -19,6 +20,7 @@ $c-name: '.c-Resource';
 
     &.is-Active {
       background-color: lighten($bg2-c, 8%);
+      z-index: 5;
     }
   }
 }
@@ -45,4 +47,59 @@ $c-name: '.c-Resource';
   &--website {
     font-size: 0.9em;
   }
+}
+
+#{$c-name}__details {
+  background-color: lighten($bg2-c, 5%);
+  border-bottom-left-radius: $global-border-radius;
+  border-bottom-right-radius: $global-border-radius;
+  margin-top: -0.5rem;
+  padding: 1.5em 1rem 0.5em 1rem;
+  z-index: 2;
+}
+
+#{$c-name}__details-website {
+  display: block;
+  word-wrap: break-word;
+}
+
+#{$c-name}__details-purchase {
+  font-size: 0.8em;
+  margin: 1em 0 0.5em 0;
+}
+
+#{$c-name}__details-description-wrap {
+  margin: 0.5em 0;
+  position: relative;
+
+  &:before, &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0; right: 0;
+  }
+
+  &:before {
+    background-image: linear-gradient(
+      lighten($bg2-c, 5%),
+      rgba(lighten($bg2-c, 5%), 0)
+    );
+    height: 1rem;
+    top: 0;
+  }
+
+  &:after {
+    background-image: linear-gradient(
+      rgba(lighten($bg2-c, 5%), 0),
+      lighten($bg2-c, 5%)
+    );
+    height: 2rem;
+    bottom: 0;
+  }
+}
+
+#{$c-name}__details-description {
+  max-height: 11rem;
+  padding: 0.75rem 0 2rem 0;
+  overflow-y: auto;
 }

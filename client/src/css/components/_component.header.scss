@@ -110,9 +110,13 @@ $c-name: '.c-Header';
 }
 
 #{$c-name}__list {
-  margin-top: 0.5rem;
+  margin: 0.5rem -1rem -0.5rem -1rem;
   padding: 0;
-  width: 100%;
+  width: calc(100% + 2rem);
+
+  @media only screen and (min-width: $bp-md) {
+    margin: 0;
+  }
 }
 
 #{$c-name}__item {
@@ -121,8 +125,10 @@ $c-name: '.c-Header';
   text-align: center;
 
   @media only screen and (min-width: $bp-md) {
+    background-color: transparent;
     display: inline-block;
     margin-right: 1.5em;
+    padding: 0;
   }
 }
 

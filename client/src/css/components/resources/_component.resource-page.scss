@@ -3,11 +3,15 @@ $c-name: '.c-Resource-page';
 #{$c-name}__filters {
   background-color: transparentize($bg2-c, 0.1);
   border-radius: $global-border-radius;
-  margin-top: 1em;
+  margin-top: -3rem;
   padding: 1em 1rem;
-  position: fixed;
-  top: 13rem;
-  width: 14%;
+
+  @media only screen and (min-width: $bp-md) {
+    margin-top: 1em;
+    position: fixed;
+    top: 13rem;
+    width: 14%;
+  }
 }
 
 #{$c-name}__resource-list {
@@ -15,15 +19,25 @@ $c-name: '.c-Resource-page';
 }
 
 #{$c-name}__resource-details {
-  margin: -2em -2rem 1em 0;
-  padding-left: 1rem;
-  position: relative;
+  display: none;
+
+  @media only screen and (min-width: $bp-md) {
+    display: block;
+    margin: -2em -2rem 1em 0;
+    padding-left: 1rem;
+    position: relative;
+  }
 }
 
 #{$c-name}__lg-ad {
-  padding-top: 6rem;
-  position: fixed;
-  text-align: center;
-  top: 13rem;
-  width: 48%;
+  display: none;
+
+  @media only screen and (min-width: $bp-md) {
+    display: block;
+    padding-top: 6rem;
+    position: fixed;
+    text-align: center;
+    top: 13rem;
+    width: 48%;
+  }
 }
