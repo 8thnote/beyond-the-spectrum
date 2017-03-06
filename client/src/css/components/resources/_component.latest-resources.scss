@@ -1,5 +1,13 @@
 $c-name: '.c-Latest';
 
+#{$c-name} {
+  margin-top: 2rem;
+
+  @media only screen and (min-width: $bp-md) {
+    margin-top: 0;
+  }
+}
+
 #{$c-name}__heading {
   font-size: 1rem;
 }

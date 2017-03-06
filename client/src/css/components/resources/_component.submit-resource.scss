@@ -1,7 +1,10 @@
 $c-name: '.c-Submit-resource';
 
 #{$c-name} {
-  margin-top: -8rem;
+  margin: -3rem 0 5rem 0;
+  @media only screen and (min-width: $bp-md) {
+    margin-top: -8rem;
+  }
 }
 
 $c-name: '.c-Ss-err';

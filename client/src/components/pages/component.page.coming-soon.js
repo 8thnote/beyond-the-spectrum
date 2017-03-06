@@ -1,13 +1,15 @@
 import React from 'react';
+
 import Formsy from 'formsy-react';
-import { FormsySelect, FormsyText } from 'formsy-material-ui/lib';
-import MenuItem from 'material-ui/MenuItem';
+import { FormsyText, FormsyCheckbox } from 'formsy-material-ui/lib';
 import RaisedButton from 'material-ui/RaisedButton';
 import axios from 'axios';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import MyFormsyRecaptcha from './component.formsy-recaptcha';
+import MyFormsyRecaptcha from '../fragments/component.formsy-recaptcha';
 
-class SubmitResource extends React.Component {
+import LatestResources from '../fragments/component.latest-resources';
+
+class ComingSoonPage extends React.Component {
   constructor () {
     super();
 
@@ -22,21 +24,22 @@ class SubmitResource extends React.Component {
       sending: false,
       sent: false,
       captchaErrorShown: false,
-      category: '',
-      title: '',
-      description: '',
-      website_link: '',
-      purchase_link: ''
+      name: '',
+      email: '',
+      phone: '',
+      message: '',
+      notify: true
     };
   }
 
   render() {
-    function renderSubmitForm () {
+
+    function renderContactForm () {
       if (!this.state.sent && !this.state.sending) {
         return (
           <div key="'form'">
-            <h3 className="o-Page__title">
-              Submit a Resource
+            <h3 className="o-Second-H">
+              Contact Us
             </h3>
 
             {this.state.captchaErrorShown &&
@@ -51,73 +54,43 @@ class SubmitResource extends React.Component {
               onValid={this.enableButton}
               onInvalid={this.disableButton}
               onValidSubmit={this.submitForm}
-              onInvalidSubmit={this.notifyFormError}
-            >
+              onInvalidSubmit={this.notifyFormError}>
               <div className="row">
-                <div className="col-xs-12 col-md-6">
-                  <FormsySelect
-                    name="category"
-                    value={this.state.category}
-                    required
-                    floatingLabelText="Category*"
-                    fullWidth={true}
-                  >
-                    <MenuItem value={'book'} primaryText="Book" />
-                    <MenuItem value={'magazine'} primaryText="Magazine" />
-                    <MenuItem value={'website'} primaryText="Website" />
-                    <MenuItem value={'other'} primaryText="Other" />
-                  </FormsySelect>
-                </div>
-                <div className="col-xs-12 col-md-6">
+                <div className="col-xs-12 col-md-8">
                   <FormsyText
-                    name="title"
-                    value={this.state.title}
-                    required
-                    validations="maxLength:30"
-                    validationError="Please shorten the title to 30 or less characters"
-                    hintText="E.g. Autism Speaks"
-                    floatingLabelText="Title*"
+                    name="name"
+                    value={this.state.name}
+                    floatingLabelText="Your Name"
                     fullWidth={true}
                   />
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-xs-12">
                   <FormsyText
-                    name="description"
-                    value={this.state.description}
+                    name="email"
+                    value={this.state.email}
                     required
-                    hintText="Please add some information about the resource."
-                    floatingLabelText="Description*"
+                    floatingLabelText="Email*"
+                    fullWidth={true}
+                  />
+                  <FormsyText
+                    name="phone"
+                    value={this.state.phone}
+                    floatingLabelText="Phone"
+                    fullWidth={true}
+                  />
+                  <FormsyText
+                    name="message"
+                    value={this.state.message}
+                    hintText="Your suggestions or other comments."
+                    floatingLabelText="Message"
                     multiLine={true}
                     rows={5}
                     fullWidth={true}
                   />
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-xs-12">
-                  <FormsyText
-                    name="website_link"
-                    value={this.state.website_link}
-                    required
-                    hintText="E.g. http://www.autismspeaks.org/"
-                    floatingLabelText="Website Link*"
-                    fullWidth={true}
+                  <br /><br />
+                  <FormsyCheckbox
+                    name="notify"
+                    value={this.state.notify}
+                    label="Yes! Please notify me about changes to the site."
                   />
-                  <p>Please copy and paste the full url including http:// or https://.</p>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-xs-12">
-                  <FormsyText
-                    name="purchase_link"
-                    value={this.state.purchase_link}
-                    hintText=""
-                    floatingLabelText="Purchase Link"
-                    fullWidth={true}
-                  />
-                  <p>A direct link to the purchase page if applicable.</p>
                 </div>
               </div>
               <div className="row">
@@ -139,7 +112,7 @@ class SubmitResource extends React.Component {
               </div>
             </Formsy.Form>
           </div>
-        );
+        )
       } else if (this.state.sending) {
         return (
           <div key="'sending'" style={{position: 'absolute', top: 0, left: 0}}>
@@ -152,30 +125,56 @@ class SubmitResource extends React.Component {
             <h3 className="o-Page__title">
               Thank You!
             </h3>
-            <p>Thank you for submitting a resource. We will review it and add it to our website if it meets our submission criteria.</p>
-            <div className="o-Form-btn-wrap">
-              <RaisedButton
-                label="Submit Another Resource"
-                onClick={this.submitAnother}
-              />
-            </div>
+            <p>Thank you for contacting us. We look forward to connecting with you!</p>
           </div>
         )
       }
     }
+
     return (
-      <div className="o-Page c-Submit-resource">
-        <div style={{position: 'relative'}}>
-          <ReactCSSTransitionGroup
-            transitionName="slow-fade"
-            transitionEnterTimeout={800}
-            transitionLeaveTimeout={500}
-          >
-              {renderSubmitForm.call(this)}
-          </ReactCSSTransitionGroup>
+      <div className="row">
+        <div className="col-xs-12 col-md-offset-1 col-md-10">
+          <div className="o-Page o-Page--neg-mt">
+            <div className="row">
+              <div className="col-md-8">
+                <h2 className="o-Page__title">Coming Soon</h2>
+                <p>
+                  We're glad you've found this site! It is brand new and we are working hard to add useful features such as the following:
+                </p>
+
+                <ul>
+                  <li>User accounts which will allow you to:</li>
+                  <li>Favorite resources so you can refer to your personalized list at any time</li>
+                  <li>Rate resources so you can sort the list by resources that are most helpful</li>
+                  <li>Personalized list of resources based on your location</li>
+                  <li>Comment on resources</li>
+                  <li>Include other types of helpful info such as recipes, etc.</li>
+                  <li>And more if we find that there's interest in this type of website! Please let us know below.</li>
+                </ul>
+
+                <h3>Want to be notified? Or have a suggestion?</h3>
+
+                <br />
+
+                <div style={{position: 'relative'}}>
+                  <ReactCSSTransitionGroup
+                    transitionName="slow-fade"
+                    transitionEnterTimeout={800}
+                    transitionLeaveTimeout={500}
+                  >
+                      {renderContactForm.call(this)}
+                  </ReactCSSTransitionGroup>
+                </div>
+
+              </div>
+              <div className="col-md-offset-1 col-md-3">
+                <LatestResources />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    )
+    );
   }// end render
 
   enableButton () {
@@ -239,4 +238,4 @@ class SubmitResource extends React.Component {
   }
 }
 
-export default SubmitResource;
+export default ComingSoonPage;

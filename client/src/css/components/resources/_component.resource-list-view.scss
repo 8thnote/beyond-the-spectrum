@@ -4,8 +4,13 @@ $c-name: '.c-Resource';
   box-shadow: 1px 1px 3px transparentize($dark, 0.8);
   color: $text-c;
   display: block;
+  font-size: 1rem;
   margin-bottom: 0.5em;
   position: relative;
+
+  @media only screen and (min-width: $bp-md) {
+    font-size: 1.1rem;
+  }
 
   > a {
     background-color: $bg2-c;
@@ -31,6 +36,7 @@ $c-name: '.c-Resource';
   color: $light;
   display: block;
   font-family: $second-font-family;
+  font-size: 1em;
   margin: 0 0 0.5em -1.2rem;
   padding: 0.5em 1rem 0.5em 1.2rem;
   text-shadow: 1px 1px 1px $shadow-on-accent2;
@@ -42,17 +48,26 @@ $c-name: '.c-Resource';
 
 #{$c-name}__category {
   float: right;
-  font-size: 1.2em;
+  font-size: 1em;
 
   &--website {
     font-size: 0.9em;
   }
 }
 
+#{$c-name}__rating {
+  font-size: 0.8em;
+}
+
+#{$c-name}__rating-soon {
+  color: lighten($text-c, 5%);
+}
+
 #{$c-name}__details {
   background-color: lighten($bg2-c, 5%);
   border-bottom-left-radius: $global-border-radius;
   border-bottom-right-radius: $global-border-radius;
+  font-size: 0.9em;
   margin-top: -0.5rem;
   padding: 1.5em 1rem 0.5em 1rem;
   z-index: 2;

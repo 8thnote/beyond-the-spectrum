@@ -88,6 +88,10 @@ class ResourcesPage extends React.Component {
     return (
       <div className="row c-Resource-page">
         <div className="col-xs-12 col-md-2">
+          <MediaQuery query='(max-width: 61.999em)'>
+            <Route path={`${this.props.match.url}/submit-resource/`} exact component={SubmitResource} />
+          </MediaQuery>
+
           <div className="c-Resource-page__filters">
             <p>Filter Resources:</p>
             <Checkbox

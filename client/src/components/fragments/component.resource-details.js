@@ -54,11 +54,11 @@ class ResourceDetails extends React.Component {
           </p>
         </div>
 
-        { resource.rating &&
+        {/* resource.rating &&
           <p>
             <strong>Rating: </strong> {resource.rating} / 5
           </p>
-        }
+        */}
 
         <p className="c-Details__website">
           <strong>Website: </strong>

@@ -37,11 +37,12 @@ class ResourceListView extends React.Component {
             { renderCatIcon(category) }
           </h3>
           <p className="c-Resource__rating">
-            { rating ?
+            <span className="c-Resource__rating-soon">rating feature coming soon</span>
+            {/* rating ?
                 `rating: ${rating} / 5`
 
-                : 'not rated yet'
-            }
+                : 'needs more ratings'
+            */}
           </p>
         </NavLink>
         <MediaQuery query='(max-width: 61.999em)'>

@@ -1,6 +1,4 @@
-$o-name: '.o-Btn';
-
-#{$o-name} {
+.o-Btn {
   background-color: $accent1-c;
   border-radius: $global-border-radius;
   box-shadow: 0 1px 3px 2px transparentize($dark, 0.8);
@@ -27,29 +25,68 @@ $o-name: '.o-Btn';
   }
 }
 
+.o-Btn--full\@xs {
+  @media only screen and (max-width: ($bp-sm - 0.001em)) {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 80%;
+  }
+}
+
 .o-List-bare {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
+.o-Form-captcha-wrap {
+  padding-top: 2em;
+
+  #g-recaptcha {
+    margin-left: -1.5rem;
+    transform-origin: 50% 0;
+    transform: scale(0.8);
+
+    @media only screen and (min-width: $bp-md) {
+      margin-left: 0.5rem;
+      transform: scale(1);
+    }
+  }
+}
+
 .o-Form-btn-wrap {
   padding: 2em 0.5rem;
+  text-align: center;
   width: 100%;
+
+  @media only screen and (min-width: $bp-md) {
+    text-align: left;
+  }
 }
 
 .o-Form-btn {
   transform: scale(1.4);
-  transform-origin: 0 0;
+  transform-origin: 50% 0;
+
+  @media only screen and (min-width: $bp-md) {
+    transform-origin: 0 0;
+  }
 }
 
 .o-Page {
   background-color: $light;
-  border-top-left-radius: $global-border-radius;
-  border-bottom-left-radius: $global-border-radius;
+  border-radius: $global-border-radius;
   font-size: 1rem;
   min-height: 14rem;
-  padding: 3em 2rem;
+  padding: 1.5em 1.25rem;
+
+  @media only screen and (min-width: $bp-md) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 3em 2rem;
+  }
 
   &--neg-mt {
     margin-top: -2rem;
@@ -61,7 +98,21 @@ $o-name: '.o-Btn';
 .o-Page__title {
   color: $accent1-c;
   font-family: $second-font-family;
-  font-size: 2.5em;
+  font-size: 1.8em;
+
+  @media only screen and (min-width: $bp-md) {
+    font-size: 2.5em;
+  }
+}
+
+.o-Second-H {
+  color: $text-c;
+  font-family: $second-font-family;
+  font-size: 1.5em;
+
+  @media only screen and (min-width: $bp-md) {
+    font-size: 2em;
+  }
 }
 
 .fade-slide-appear {

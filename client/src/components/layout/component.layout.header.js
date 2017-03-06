@@ -65,13 +65,22 @@ class Header extends React.Component {
                     Submit a Resource
                   </NavLink>
                 </li>
+                <li className="c-Header__item">
+                  <NavLink
+                    to="/coming-soon/"
+                    className="c-Header__link"
+                    activeClassName="is-Active"
+                  >
+                    About &amp; Contact
+                  </NavLink>
+                </li>
               </ul>
             </nav>
             <nav className="col-md-2 c-Header__signin">
               <ul className="o-List-bare c-Header__list">
                 <li className="c-Header__item">
                   <NavLink
-                    to="/resources/"
+                    to="/coming-soon/"
                     className="c-Header__link"
                     activeClassName="is-Active"
                   >
@@ -80,7 +89,7 @@ class Header extends React.Component {
                 </li>
                 <li className="c-Header__item">
                   <NavLink
-                    to="/resources/submit-resource/"
+                    to="/coming-soon/"
                     className="c-Header__link"
                     activeClassName="is-Active"
                   >

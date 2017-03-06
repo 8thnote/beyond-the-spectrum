@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import LatestResources from '../fragments/component.latest-resources';
 
-class ResourcesPage extends React.Component {
+class HomePage extends React.Component {
   render() {
     return (
       <div className="row">
@@ -18,7 +18,7 @@ class ResourcesPage extends React.Component {
 
                 <NavLink
                   to="/resources/"
-                  className="o-Btn"
+                  className="o-Btn o-Btn--full@xs"
                 >
                   View All Resources
                 </NavLink>
@@ -34,4 +34,4 @@ class ResourcesPage extends React.Component {
   }// end render
 }
 
-export default ResourcesPage;
+export default HomePage;
